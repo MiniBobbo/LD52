@@ -3,4 +3,5 @@ export enum GameEvents {
     END_TEXT_OVERLAY = 'endtextoverlay',
     TALK = 'talk',
     FINISH_STEP= 'finishstep',
+    ADD_INVENTORY = 'addinventory'
 }

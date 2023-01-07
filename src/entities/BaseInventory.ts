@@ -1,14 +1,15 @@
+import { runInThisContext } from "vm";
 import { GameEvents } from "../events/GameEvents";
 import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
-import { BaseEntity } from "./BaseEntity";
+import { ActorEntity } from "./ActorEntity";
 
-export class ActorEntity extends BaseEntity {
+export class BaseInventory extends ActorEntity {
     sprite:Phaser.GameObjects.Sprite;
-    create(gs:GameScene, instance:EntityInstance) {
+    create(gs:GameScene, instance:EntityInstance = null) {
         this.gs = gs;
-        this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
-        .setOrigin(0,0)
+        this.interactZone = gs.add.zone(0,0, 50,40)
+        // .setOrigin(0,0)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
         .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
@@ -18,27 +19,21 @@ export class ActorEntity extends BaseEntity {
                     this.LeftAction(this.gs);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')
                     this.RightAction(this.gs);
-                    
             }, this);
         gs.events.on('update', this.update, this);
         gs.events.on('destroy', this.destroy, this);
         this.topx = this.interactZone.getTopCenter().x;
         this.topy = this.interactZone.getTopCenter().y;
+        this.sprite = gs.add.sprite(-100,-100,'atlas').setSize(50,40);
 
     }
-    destroy() {
-        this.gs.events.removeListener('update', this.update, this);
-        this.gs.events.removeListener('destroy', this.destroy, this);
+
+    SetInventoryPosition(position:number) {
+        this.sprite.setPosition(position * 50 + 25, 250);
+        this.topx = this.sprite.x;
+        this.topy = this.sprite.y - 40;
     }
 
-    update() {
-        this.interactZone.x = this.sprite.x;
-        this.interactZone.y = this.sprite.y;
-    }
-
-    RemoveFromScreen() {
-        this.sprite.disableInteractive().setVisible(false).setPosition(-100,-100);
-
-    }
+    
 
 }

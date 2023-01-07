@@ -4,7 +4,7 @@ import { IGameAction } from "../interfaces/IGameCommand";
 import { GameScene } from "../scenes/GameScene";
 
 /**This is a basic talk action where the text appears above the top of the speaker. */
-export class ChangeScreenAction implements IGameAction {
+export class ActionChangeScreen implements IGameAction {
     nextScreen:number;
     nextPosition:number;
 

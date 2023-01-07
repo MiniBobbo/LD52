@@ -11,7 +11,7 @@
 	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
 	"jsonVersion": "1.2.3",
 	"appBuildId": 464726,
-	"nextUid": 23,
+	"nextUid": 32,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
 	"worldGridWidth": 480,
@@ -176,6 +176,108 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "FlagRequired",
+					"doc": null,
+					"__type": "String",
+					"uid": 26,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "NameAndValue",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_String",
+						"params": ["All"]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "FlagDefault",
+					"doc": null,
+					"__type": "Bool",
+					"uid": 27,
+					"type": "F_Bool",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_Bool",
+						"params": [ true ]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "Destination",
+					"doc": null,
+					"__type": "Point",
+					"uid": 28,
+					"type": "F_Point",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPath",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		},
@@ -296,6 +398,38 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Destination",
+					"doc": null,
+					"__type": "Point",
+					"uid": 29,
+					"type": "F_Point",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPath",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		},
@@ -314,7 +448,7 @@
 			"hollow": false,
 			"color": "#D77643",
 			"renderMode": "Rectangle",
-			"showName": true,
+			"showName": false,
 			"tilesetId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
@@ -335,7 +469,109 @@
 					"canBeNull": true,
 					"arrayMinLength": null,
 					"arrayMaxLength": null,
-					"editorDisplayMode": "Hidden",
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": false,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "FlagRequired",
+					"doc": null,
+					"__type": "String",
+					"uid": 24,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "NameAndValue",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_String",
+						"params": ["All"]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "FlagDefault",
+					"doc": null,
+					"__type": "Bool",
+					"uid": 25,
+					"type": "F_Bool",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_Bool",
+						"params": [ true ]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "Destination",
+					"doc": null,
+					"__type": "Point",
+					"uid": 30,
+					"type": "F_Point",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPath",
 					"editorDisplayPos": "Above",
 					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
@@ -480,6 +716,38 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Destination",
+					"doc": null,
+					"__type": "Point",
+					"uid": 31,
+					"type": "F_Point",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPath",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		}
@@ -562,10 +830,18 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [192,112],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": { "cx": 11, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["11,10"]
+								}] }
+							]
 						},
 						{
 							"__identifier": "Entity",
@@ -579,10 +855,18 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [160,96],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": { "cx": 9, "cy": 9 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["9,9"]
+								}] }
+							]
 						},
 						{
 							"__identifier": "Entity",
@@ -596,10 +880,21 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [128,64],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "Scarecrow", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Scarecrow"]
+								}] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": { "cx": 7, "cy": 7 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["7,7"]
+								}] }
+							]
 						},
 						{
 							"__identifier": "EntryPoint",
@@ -641,10 +936,18 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [32,16],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "door", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["door"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "door", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["door"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": { "cx": 3, "cy": 4 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["3,4"]
+								}] }
+							]
 						},
 						{
 							"__identifier": "POI",
@@ -658,10 +961,13 @@
 							"height": 64,
 							"defUid": 15,
 							"px": [288,64],
-							"fieldInstances": [{ "__identifier": "Description", "__value": "Road", "__type": "String", "__tile": null, "defUid": 16, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["Road"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "Description", "__value": "Road", "__type": "String", "__tile": null, "defUid": 16, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Road"]
+								}] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 29, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "Actor",
@@ -675,10 +981,21 @@
 							"height": 16,
 							"defUid": 17,
 							"px": [160,192],
-							"fieldInstances": [{ "__identifier": "Name", "__value": "Bone", "__type": "String", "__tile": null, "defUid": 18, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["Bone"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "Name", "__value": "Bone", "__type": "String", "__tile": null, "defUid": 18, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Bone"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "Bone", "__type": "String", "__tile": null, "defUid": 24, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Bone"]
+								}] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 25, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": { "cx": 9, "cy": 12 }, "__type": "Point", "__tile": null, "defUid": 30, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["9,12"]
+								}] }
+							]
 						},
 						{
 							"__identifier": "ChangeScreen",
@@ -698,6 +1015,10 @@
 								{ "__identifier": "Description", "__value": "Screen 2", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["Screen 2"]
+								}] },
+								{ "__identifier": "Destination", "__value": { "cx": 25, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 31, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["25,10"]
 								}] }
 							]
 						}
@@ -827,10 +1148,15 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [192,112],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "Entity",
@@ -844,10 +1170,15 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [160,96],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "Entity",
@@ -861,10 +1192,15 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [128,64],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["scarecrow"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "scarecrow", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["scarecrow"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "EntryPoint",
@@ -906,10 +1242,15 @@
 							"height": 48,
 							"defUid": 6,
 							"px": [32,16],
-							"fieldInstances": [{ "__identifier": "ID", "__value": "door", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["door"]
-							}] }]
+							"fieldInstances": [
+								{ "__identifier": "ID", "__value": "door", "__type": "String", "__tile": null, "defUid": 7, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["door"]
+								}] },
+								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+							]
 						},
 						{
 							"__identifier": "ChangeScreen",
@@ -929,7 +1270,8 @@
 								{ "__identifier": "Description", "__value": "Back to screen 1", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["Back to screen 1"]
-								}] }
+								}] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 31, "realEditorValues": [] }
 							]
 						}
 					]

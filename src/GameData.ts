@@ -1,9 +1,10 @@
 import { C } from "./C";
 
 export class GameData {
-    flags:Map<number, boolean>;
+    flags:Map<string, boolean>;
 
     constructor() {
-        this.flags = new Map<number, boolean>();
+        this.flags = new Map<string, boolean>();
+        this.flags.set('All', true);
     }
 }

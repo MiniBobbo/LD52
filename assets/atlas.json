@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 14,
-				"h": 52
+				"h": 78
 			},
 			"scale": 1,
 			"frames": [
@@ -31,6 +31,48 @@
 					}
 				},
 				{
+					"filename": "MouseButtons_0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 11,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 11,
+						"h": 11
+					},
+					"frame": {
+						"x": 1,
+						"y": 43,
+						"w": 11,
+						"h": 11
+					}
+				},
+				{
+					"filename": "MouseButtons_1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 11,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 11,
+						"h": 11
+					},
+					"frame": {
+						"x": 1,
+						"y": 56,
+						"w": 11,
+						"h": 11
+					}
+				},
+				{
 					"filename": "Bone",
 					"rotated": false,
 					"trimmed": true,
@@ -46,7 +88,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 43,
+						"y": 69,
 						"w": 10,
 						"h": 8
 					}
@@ -57,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b66426474662ca0ea07d4e95596f6068:e285374299d251b7e149e8574fd8b284:cbce6b53f0f49e0bf15173c25c41f876$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b36eccc8dce1ad710baee9563d47db5e:ff2f2e103be8992822e649cbdddf7f40:cbce6b53f0f49e0bf15173c25c41f876$"
 	}
 }

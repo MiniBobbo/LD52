@@ -1,6 +1,6 @@
 import { throws } from "assert";
 import { GameEvents } from "../events/GameEvents";
-import { ChangeScreenAction } from "../gameactions/ChangeScreenAction";
+import { ActionChangeScreen } from "../gameactions/ActionChangeScreen";
 import { IEntity } from "../interfaces/IEntity";
 import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
@@ -26,7 +26,7 @@ export class ChangeScreenEntity implements IEntity {
 
     LeftAction(gs:GameScene) {
         gs.LoadAndRunGameActions([
-            new ChangeScreenAction(this.nextScreen, this.nextPosition)
+            new ActionChangeScreen(this.nextScreen, this.nextPosition)
         ]);
     }
 
