@@ -1,3 +1,4 @@
+import { Game } from "phaser";
 import { GameData } from "./GameData";
 
 export class C {
@@ -21,12 +22,19 @@ export class C {
         return {x:newX, y:newY};
     }
 
-    static checkFlag(flag:string):boolean {
-        //@ts-ignore
-        return this.gd.flags[flag];
+    static checkFlag(flag:number):boolean {
+        if(this.gd == null)
+            this.gd = new GameData();
+        if(this.gd.flags.has(flag))
+            return this.gd.flags.get(flag);
+        else
+            this.gd.flags.set(flag, false);
+        return false
     }
-    static setFlag(flag:string, value:boolean) {
-        //@ts-ignore
-        this.gd.flags[flag] = value;
+
+    static setFlag(flag:number, value:boolean) {
+        if(this.gd == null)
+            this.gd = new GameData();
+        this.gd.flags.set(flag, value);
     }
 }

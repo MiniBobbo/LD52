@@ -14,4 +14,6 @@ export interface IEntity {
     Description:string;
     LeftDescription:string;
     RightDescription:string;
+
+    RequiredFlag:number;
 }

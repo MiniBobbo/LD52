@@ -1,10 +1,17 @@
+import { throws } from "assert";
 import { GameEvents } from "../events/GameEvents";
+import { IEntity } from "../interfaces/IEntity";
 import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
-import { BaseEntity } from "./BaseEntity";
 
-export class ActorEntity extends BaseEntity {
-    sprite:Phaser.GameObjects.Sprite;
+export class BaseEntity implements IEntity {
+    RequiredFlag: number;
+    topx: number;
+    topy: number;
+    
+    interactZone:Phaser.GameObjects.Zone;
+    gs:GameScene;
+
     create(gs:GameScene, instance:EntityInstance) {
         this.gs = gs;
         this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
@@ -16,23 +23,26 @@ export class ActorEntity extends BaseEntity {
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                     this.LeftAction(this.gs);
-                    else if(p.rightButtonDown() && this.RightDescription.trim() != '')
-                    this.RightAction(this.gs);
                     
             }, this);
-        gs.events.on('update', this.update, this);
-        gs.events.on('destroy', this.destroy, this);
+        
         this.topx = this.interactZone.getTopCenter().x;
         this.topy = this.interactZone.getTopCenter().y;
 
     }
-    destroy() {
-        this.gs.events.removeListener('update', this.update, this);
-        this.gs.events.removeListener('destroy', this.destroy, this);
-    }
 
-    update() {
-        this.interactZone.x = this.sprite.x;
-        this.interactZone.y = this.sprite.y;
+    LeftAction(gs: GameScene) {
+        throw new Error("Method not implemented.");
     }
+    RightAction(gs: GameScene) {
+        throw new Error("Method not implemented.");
+    }
+    dispose() {
+        throw new Error("Method not implemented.");
+    }
+    ID: string;
+    Description: string = '';
+    LeftDescription: string = '';
+    RightDescription: string = '';
+
 }

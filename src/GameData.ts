@@ -1,11 +1,9 @@
 import { C } from "./C";
 
 export class GameData {
-    flags:Array<boolean>;
+    flags:Map<number, boolean>;
 
     constructor() {
-        this.flags = [];
-        for(let i = 0; i < C.FLAG_COUNT; i++)
-            this.flags.push(false);
+        this.flags = new Map<number, boolean>();
     }
 }

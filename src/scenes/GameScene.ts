@@ -1,21 +1,24 @@
 import { C } from "../C";
 import { BaseEntity } from "../entities/BaseEntity";
+import { Player } from "../entities/Player";
 import { GameEvents } from "../events/GameEvents";
 import { TextOverlay } from "../gamestuff/TextOverlay";
 import { EntityFactory } from "../helpers/EntityFactory";
 import { IEntity } from "../interfaces/IEntity";
-import { LdtkReader } from "../map/LDtkReader";
+import { EntityInstance, LdtkReader } from "../map/LDtkReader";
 
 export class GameScene extends Phaser.Scene {
        reader:LdtkReader;
        bg:Phaser.GameObjects.Image;
        to:TextOverlay;
+       player:Player;
        speech:Phaser.GameObjects.BitmapText;
        CurrentOverlayObject:string = '';
        debug:Phaser.GameObjects.Graphics;
        BGLayer:Phaser.GameObjects.Layer;
        EntityLayer:Phaser.GameObjects.Layer;
        DisplayLayer:Phaser.GameObjects.Layer;
+       myDebug:boolean = false;
 
        Entities:IEntity[] = [];
        create() {
@@ -41,24 +44,44 @@ export class GameScene extends Phaser.Scene {
                             be.create(this, e);
                             be.Description = e.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
                             this.Entities.push(be);
+                     } else if (e.__identifier == 'EntryPoint') {
+                            if(e.fieldInstances.find(i=>i.__identifier == 'ID').__value == C.EntryPoint) {
+                                   this.CreatePlayer(e);
+                            }
+                     } else if (e.__identifier == 'ChangeScreen') {
+                            // if(e.fieldInstances.find(i=>i.__identifier == 'ID').__value == C.EntryPoint) {
+                                   // this.CreatePlayer(e);
+                            // }
                      }
               });
-              
+              //If the player hasn't been created it means that the current level doesn't have an Entry Point that matches the C.EntryPoint value.  
+              //Warn and maybe create a default player later...
+              if(this.player == null)
+                     throw `EntryPoint ${C.EntryPoint} does not exist in screen ${C.currentScreen}`;
 
-
-              this.debug = this.add.graphics().setAlpha(.5).lineStyle(1,0xff0000);
-              this.Entities.forEach(e => {
-                     if( e instanceof BaseEntity) {
-                            let be = e as BaseEntity;
-                            this.debug.strokeRect(be.interactZone.x, be.interactZone.y, be.interactZone.width, be.interactZone.height);
-                     }
-
-              });
+              if(this.myDebug) {
+                     this.DrawDebug();
+              }
 
               this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
               this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
               // this.events.on
 
+       }
+
+       private DrawDebug() {
+              this.debug = this.add.graphics().setAlpha(.5).lineStyle(1, 0xff0000);
+              this.Entities.forEach(e => {
+                     if (e instanceof BaseEntity) {
+                            let be = e as BaseEntity;
+                            this.debug.strokeRect(be.interactZone.x, be.interactZone.y, be.interactZone.width, be.interactZone.height);
+                     }
+
+              });
+       }
+
+       CreatePlayer(e:EntityInstance) {
+              this.player = new Player(this, e.px[0], e.px[1]);
        }
 
        CreateLayersAndDisplay() {
