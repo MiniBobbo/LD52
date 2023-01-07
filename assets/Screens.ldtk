@@ -11,7 +11,7 @@
 	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
 	"jsonVersion": "1.2.3",
 	"appBuildId": 464726,
-	"nextUid": 22,
+	"nextUid": 23,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
 	"worldGridWidth": 480,
@@ -448,6 +448,38 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Description",
+					"doc": null,
+					"__type": "String",
+					"uid": 22,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		}
@@ -662,7 +694,11 @@
 							"px": [416,112],
 							"fieldInstances": [
 								{ "__identifier": "NextScreen", "__value": 1, "__type": "Int", "__tile": null, "defUid": 20, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
-								{ "__identifier": "Position", "__value": 1, "__type": "Int", "__tile": null, "defUid": 21, "realEditorValues": [] }
+								{ "__identifier": "Position", "__value": 1, "__type": "Int", "__tile": null, "defUid": 21, "realEditorValues": [] },
+								{ "__identifier": "Description", "__value": "Screen 2", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Screen 2"]
+								}] }
 							]
 						}
 					]
@@ -874,6 +910,27 @@
 								"id": "V_String",
 								"params": ["door"]
 							}] }]
+						},
+						{
+							"__identifier": "ChangeScreen",
+							"__grid": [25,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#EAD4AA",
+							"iid": "3e8b6e20-7820-11ed-a399-a14ff18560a2",
+							"width": 64,
+							"height": 64,
+							"defUid": 19,
+							"px": [400,144],
+							"fieldInstances": [
+								{ "__identifier": "NextScreen", "__value": 0, "__type": "Int", "__tile": null, "defUid": 20, "realEditorValues": [{ "id": "V_Int", "params": [0] }] },
+								{ "__identifier": "Position", "__value": 2, "__type": "Int", "__tile": null, "defUid": 21, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
+								{ "__identifier": "Description", "__value": "Back to screen 1", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Back to screen 1"]
+								}] }
+							]
 						}
 					]
 				},

@@ -1,10 +1,12 @@
 import { C } from "../C";
 import { BaseEntity } from "../entities/BaseEntity";
+import { ChangeScreenEntity } from "../entities/ChangeScreenEntity";
 import { Player } from "../entities/Player";
 import { GameEvents } from "../events/GameEvents";
 import { TextOverlay } from "../gamestuff/TextOverlay";
 import { EntityFactory } from "../helpers/EntityFactory";
 import { IEntity } from "../interfaces/IEntity";
+import { IGameAction } from "../interfaces/IGameCommand";
 import { EntityInstance, LdtkReader } from "../map/LDtkReader";
 
 export class GameScene extends Phaser.Scene {
@@ -20,13 +22,19 @@ export class GameScene extends Phaser.Scene {
        DisplayLayer:Phaser.GameObjects.Layer;
        myDebug:boolean = false;
 
+       //If this flag is false, the player shouldn't be allowed to interact with the world (someone is talking, an event is happening, etc.)
+       //Right now I'm relying on each individual Entity to enforce this, but that is wrong...  No time to refactor it.
+       AllowPlayerInteractions:boolean = true;
+
+       GameActionQueue:IGameAction[] = [];
+
        Entities:IEntity[] = [];
        create() {
 
               this.input.mouse.disableContextMenu();
               this.CreateLayersAndDisplay();
               this.reader = new LdtkReader(this,this.cache.json.get('screens'));
-              let screen = this.reader.ldtk.levels.find((l:any)=> l.identifier === "Level_0");
+              let screen = this.reader.ldtk.levels.find((l:any)=> l.identifier === C.currentScreen);
               let entities = screen.layerInstances.find((l) => l.__identifier == 'Entities');
               //@ts-ignore
               let movement = screen.layerInstances.find((l) => l.__identifier == 'Movement');
@@ -49,9 +57,8 @@ export class GameScene extends Phaser.Scene {
                                    this.CreatePlayer(e);
                             }
                      } else if (e.__identifier == 'ChangeScreen') {
-                            // if(e.fieldInstances.find(i=>i.__identifier == 'ID').__value == C.EntryPoint) {
-                                   // this.CreatePlayer(e);
-                            // }
+                            let be = new ChangeScreenEntity(e);
+                            be.create(this, e);
                      }
               });
               //If the player hasn't been created it means that the current level doesn't have an Entry Point that matches the C.EntryPoint value.  
@@ -80,11 +87,11 @@ export class GameScene extends Phaser.Scene {
               });
        }
 
-       CreatePlayer(e:EntityInstance) {
+       private CreatePlayer(e:EntityInstance) {
               this.player = new Player(this, e.px[0], e.px[1]);
        }
 
-       CreateLayersAndDisplay() {
+       private CreateLayersAndDisplay() {
               this.BGLayer = this.add.layer().setDepth(0);
               this.EntityLayer = this.add.layer().setDepth(1);
               this.DisplayLayer = this.add.layer().setDepth(2);
@@ -95,13 +102,51 @@ export class GameScene extends Phaser.Scene {
               
        }
 
-       StartOverlay(e:IEntity) {
+       private StartOverlay(e:IEntity) {
               this.to.Reveal(e);
        }
-       EndOverlay(e:IEntity) {
+       private EndOverlay(e:IEntity) {
               this.to.Hide();
-
        }
 
+       /**
+        * Helper function to load and then run the queue.  This is the same as pushing multiple actions into the GameActionQueue  
+        * and then calling RunGameAction.
+        * @param actions Array of actions.
+        */
+       LoadAndRunGameActions(actions:IGameAction[]) {
+              this.GameActionQueue = actions;
+              this.RunGameActions();
+       }
+
+       /**Runs the game actions in the queue. If called, this will run through the queue until it is complete.  */
+       RunGameActions() {
+              if(this.GameActionQueue.length == 0) {
+                     this.RestartInteractions();
+                     return;
+              }
+              let next = this.GameActionQueue.shift();
+              next.StartAction(this);
+              this.time.addEvent({
+                     delay:next.Duration,
+                     callbackScope:this,
+                     callback:() =>{
+                            next.EndAction(this);
+                            this.RunGameActions();
+                     }
+              })
+       }
+
+       private StopInteractions() {
+              this.AllowPlayerInteractions = false;
+              //Listen for interrupts
+              this.input.on('mousedown', () => {
+                     console.log('Trying to skip.  Can\'t do that yet.');
+              });
+       }
+
+       private RestartInteractions() {
+              this.AllowPlayerInteractions = true;
+       }
     
 }

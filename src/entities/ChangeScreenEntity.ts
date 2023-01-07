@@ -1,16 +1,34 @@
 import { throws } from "assert";
 import { GameEvents } from "../events/GameEvents";
+import { ChangeScreenAction } from "../gameactions/ChangeScreenAction";
 import { IEntity } from "../interfaces/IEntity";
 import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
 
-export class BaseEntity implements IEntity {
+export class ChangeScreenEntity implements IEntity {
     RequiredFlag: number;
     topx: number;
     topy: number;
     
     interactZone:Phaser.GameObjects.Zone;
     gs:GameScene;
+
+    nextScreen:number;
+    nextPosition:number;
+
+    constructor(ei:EntityInstance) {
+        this.nextPosition = ei.fieldInstances.find(i=>i.__identifier == 'Position').__value as number;
+        this.nextScreen = ei.fieldInstances.find(i=>i.__identifier == 'NextScreen').__value as number;
+        this.LeftDescription = 'Travel';
+        this.Description = ei.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
+        
+    }
+
+    LeftAction(gs:GameScene) {
+        gs.LoadAndRunGameActions([
+            new ChangeScreenAction(this.nextScreen, this.nextPosition)
+        ]);
+    }
 
     create(gs:GameScene, instance:EntityInstance) {
         this.gs = gs;
@@ -31,9 +49,6 @@ export class BaseEntity implements IEntity {
 
     }
 
-    LeftAction(gs: GameScene) {
-        throw new Error("Method not implemented.");
-    }
     RightAction(gs: GameScene) {
         throw new Error("Method not implemented.");
     }

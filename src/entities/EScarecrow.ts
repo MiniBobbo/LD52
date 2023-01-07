@@ -1,3 +1,4 @@
+import { ActionTalk } from "../gameactions/ActionTalk";
 import { GameScene } from "../scenes/GameScene";
 import { BaseEntity } from "./BaseEntity";
 
@@ -6,7 +7,8 @@ export class EScarecrow extends BaseEntity {
     LeftDescription = "Check";
     // RightDescription = "Kick";
     LeftAction(gs: GameScene): void {
-        console.log('Clicked Scarecrow');
+        gs.GameActionQueue.push(new ActionTalk(gs.player as any, 'What a creepy scarecrow'));
+        this.gs.RunGameActions();
     }
     RightAction(gs: GameScene): void {
         console.log('Kicked Scarecrow');
