@@ -5,6 +5,7 @@ import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
 
 export class BaseEntity implements IEntity {
+    RequiredFlag: number;
     topx: number;
     topy: number;
     
