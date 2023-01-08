@@ -46,6 +46,7 @@ export class GameScene extends Phaser.Scene {
               this.lights.enable();
               this.CreateLayersAndDisplay();
               this.reader = new LdtkReader(this,this.cache.json.get('screens'));
+              let cs = C.currentScreen;
               let screen = this.reader.ldtk.levels.find((l:any)=> l.identifier === C.currentScreen);
               let entities = screen.layerInstances.find((l) => l.__identifier == 'Entities');
               //@ts-ignore

@@ -4,7 +4,7 @@ import { GameScene } from "../scenes/GameScene";
 import { BaseEntity } from "./BaseEntity";
 
 export class EScarecrow extends BaseEntity {
-    Description: string = 'Creepy Scarecrow';
+    Description: string = 'Scarecrow';
     LeftDescription = "Check";
     RightDescription = "Kick";
     // RightDescription = "Kick";
@@ -15,8 +15,10 @@ export class EScarecrow extends BaseEntity {
             gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}));
         }
             
-        gs.GameActionQueue.push(new ActionTalk(gs.player as any, 'What a creepy scarecrow.  This is long text so that we can see how the wrapping works.'));
-        this.gs.RunGameActions();
+        gs.LoadAndRunGameActions([
+            new ActionTalk(gs.player as any, 'I am sure this would be charming during the day.'),
+            new ActionTalk(gs.player as any, 'At night it is a little creepy.')
+        ]);
     }
     RightAction(gs: GameScene): void {
         gs.LoadAndRunGameActions([

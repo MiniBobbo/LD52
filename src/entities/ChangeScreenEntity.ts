@@ -14,12 +14,12 @@ export class ChangeScreenEntity implements IEntity {
     interactZone:Phaser.GameObjects.Zone;
     gs:GameScene;
 
-    nextScreen:number;
+    nextScreen:string;
     nextPosition:number;
 
     constructor(ei:EntityInstance) {
         this.nextPosition = ei.fieldInstances.find(i=>i.__identifier == 'Position').__value as number;
-        this.nextScreen = ei.fieldInstances.find(i=>i.__identifier == 'NextScreen').__value as number;
+        this.nextScreen = ei.fieldInstances.find(i=>i.__identifier == 'NextScreen').__value as string;
         this.LeftDescription = 'Travel';
         this.Description = ei.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
         

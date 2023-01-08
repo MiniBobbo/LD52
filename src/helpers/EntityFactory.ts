@@ -1,11 +1,16 @@
 import { C } from "../C";
 import { ActorEntity } from "../entities/ActorEntity";
+import { ActorGroundskeeper } from "../entities/actors/ActorGroundskeeper";
+import { ActorTree } from "../entities/actors/ActorTree";
 import { BoneActor } from "../entities/actors/BoneActor";
 import { BaseEntity } from "../entities/BaseEntity";
 import { BaseInventory } from "../entities/BaseInventory";
 import { EDoor } from "../entities/EDoor";
 import { EScarecrow } from "../entities/EScarecrow";
 import { InvBone } from "../entities/inventory/InvBone";
+import { InvEnvelope } from "../entities/inventory/InvEnvelope";
+import { InvKey } from "../entities/inventory/InvKey";
+import { InvWill } from "../entities/inventory/InvWill";
 import { Entity, EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
 
@@ -35,6 +40,14 @@ export class EntityFactory {
                 ae = new BoneActor();
                 ae.create(gs, e);
                 break;
+            case 'Tree':
+                ae = new ActorTree();
+                ae.create(gs, e);
+                break;
+            case 'Groundskeeper':
+                ae = new ActorGroundskeeper();
+                ae.create(gs, e);
+                break;
             default:
                 break;
 
@@ -53,12 +66,22 @@ export class EntityFactory {
         switch (type) {
             case 'Bone':
                 e = new InvBone();
-                e.create(gs, null);                
+                // e.create(gs, null);                
+                break;
+            case 'Envelope':
+                e = new InvEnvelope();
+                break;
+            case 'Key':
+                e = new InvKey();
+                break;
+            case 'Will':
+                e = new InvWill();
                 break;
         
             default:
                 break;
         }
+        e.create(gs, null);                
         e.SetInventoryPosition(position);
         return e;
     }

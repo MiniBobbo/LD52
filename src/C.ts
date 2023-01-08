@@ -2,11 +2,11 @@ import { Game } from "phaser";
 import { GameData } from "./GameData";
 
 export class C {
-    static currentScreen:string = 'Level_0';
+    static currentScreen:string = 'FrontYard';
     static EntryPoint:number = 1;
     static waypoint:string = '';
     static TILE_SIZE:number = 16;
-    static Inventory:string[] = [];
+    static Inventory:string[] = ["Envelope"];
     static WALK_SPEED:number = 250;
 
     static MOUSE_SENSITIVITY:number = .8;

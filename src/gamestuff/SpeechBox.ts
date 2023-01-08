@@ -28,8 +28,8 @@ export class SpeechBox {
     }
 
     Reveal(x:number, y:number, message:string) {
-        x = Phaser.Math.Clamp(x, 0, this.gs.cameras.main.width - 75);
-        y = Phaser.Math.Clamp(y, 0, this.gs.cameras.main.height);
+        x = Phaser.Math.Clamp(x, 90, this.gs.cameras.main.width - 90);
+        y = Phaser.Math.Clamp(y, 40, this.gs.cameras.main.height);
         this.t.text = message;
         let t = this.t.getWrappedText();
         this.c.setPosition(x, y - (5 * (t.length))).setVisible(true);

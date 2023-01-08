@@ -98,7 +98,12 @@ export class Preload extends Phaser.Scene {
         IH.AssignKeyToVirtualInput('K', 'attack');
         IH.AssignKeyToVirtualInput('X', 'attack');
 
-
+        this.anims.create({ key: 'player_stand', frameRate: 6, frames: this.anims.generateFrameNames('atlas', { prefix: 'player_stand_', end: 0}), repeat: -1 });
+        this.anims.create({ key: 'player_walk', frameRate: 6, frames: this.anims.generateFrameNames('atlas', { prefix: 'player_walk_', end: 7}), repeat: -1 });
+        this.anims.create({ key: 'player_walkup', frameRate: 6, frames: this.anims.generateFrameNames('atlas', { prefix: 'player_walkup_', end: 7}), repeat: -1 });
+        this.anims.create({ key: 'groundskeeper_stand', frameRate: 60, frames: this.anims.generateFrameNames('atlas', { prefix: 'Groundskeeper_Stand_', end: 0}), repeat: -1 });
+        this.anims.create({ key: 'groundskeeper_dig', frameRate: 6, frames: this.anims.generateFrameNames('atlas', { prefix: 'Groundskeeper_Digging_', end: 14, zeroPad:2}), repeat: -1 });
+        
 
     }
 }

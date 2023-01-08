@@ -9,7 +9,7 @@ export class ActorEntity extends BaseEntity {
         this.instance = instance;
         this.gs = gs;
         this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
-        .setOrigin(0,0)
+        .setOrigin(.5,1)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
         .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
@@ -17,10 +17,10 @@ export class ActorEntity extends BaseEntity {
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
             event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
-                    this.LeftAction(this.gs);
+                        gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')
-                    this.RightAction(this.gs);
-                    
+                        gs.events.emit(GameEvents.LAUNCH_RIGHT_ACTION, this);
+
             }, this);
         gs.events.on('update', this.update, this);
         gs.events.on('destroy', this.destroy, this);

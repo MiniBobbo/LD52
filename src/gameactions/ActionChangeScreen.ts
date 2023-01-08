@@ -5,10 +5,10 @@ import { GameScene } from "../scenes/GameScene";
 
 /**This is a basic talk action where the text appears above the top of the speaker. */
 export class ActionChangeScreen implements IGameAction {
-    nextScreen:number;
+    nextScreen:string;
     nextPosition:number;
 
-    constructor(nextScreen:number, nextPosition:number) {
+    constructor(nextScreen:string, nextPosition:number) {
         this.nextScreen = nextScreen;
         this.nextPosition = nextPosition;
     }
@@ -18,7 +18,7 @@ export class ActionChangeScreen implements IGameAction {
     }
 
     StartAction(gs: GameScene) {
-        C.currentScreen = `Level_${this.nextScreen}`;
+        C.currentScreen = `${this.nextScreen}`;
         C.EntryPoint = this.nextPosition;
         gs.scene.start('reset');
     }
