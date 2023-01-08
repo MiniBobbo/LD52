@@ -539,7 +539,7 @@ export interface EntityInstance {
 
 export interface EntityInstanceFieldInstance {
     __identifier:     any;
-    __value:          boolean | number | string;
+    __value:          any;
     __type:           Type;
     defUid:           number;
     realEditorValues: RealEditorValue[];

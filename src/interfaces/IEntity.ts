@@ -10,6 +10,7 @@ export interface IEntity {
     LeftAction(gs:GameScene);
     RightAction(gs:GameScene);
 
+    instance:EntityInstance;
     ID:string;
     Description:string;
     LeftDescription:string;

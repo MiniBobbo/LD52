@@ -18,7 +18,7 @@ export class GameScene extends Phaser.Scene {
        bg:Phaser.GameObjects.Image;
        to:TextOverlay;
        player:Player;
-       speech:Phaser.GameObjects.BitmapText;
+       speech:Phaser.GameObjects.Text;
        CurrentOverlayObject:string = '';
        debug:Phaser.GameObjects.Graphics;
        BGLayer:Phaser.GameObjects.Layer;
@@ -83,6 +83,7 @@ export class GameScene extends Phaser.Scene {
 
               this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
               this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
+              this.events.on(GameEvents.FINISH_STEP, this.RunGameActions, this);
               // this.events.on
               this.input.on('pointerdown', this.PointerDown, this);
 
@@ -91,6 +92,7 @@ export class GameScene extends Phaser.Scene {
        }
 
        private PointerDown(p:Phaser.Input.Pointer) {
+              console.log('Scene click event fired'); 
               let px = p.worldX;
               let py = p.worldY;
               let startTile = this.MoveGrid.getTileAtWorldXY(px, py);
@@ -143,7 +145,7 @@ export class GameScene extends Phaser.Scene {
               this.DisplayLayer = this.add.layer().setDepth(2);
 
               this.to = new TextOverlay(this);
-              this.speech = this.add.bitmapText(0,0,'6px', '');
+              this.speech = this.add.text(0,0, '').setWordWrapWidth(300).setFontSize(12).setAlign('center').setFontFamily('Arial').setSize(300,100);
               this.DisplayLayer.add(this.to.c);
               
        }
@@ -165,8 +167,11 @@ export class GameScene extends Phaser.Scene {
               this.RunGameActions();
        }
 
+       timer:Phaser.Time.TimerEvent;
        /**Runs the game actions in the queue. If called, this will run through the queue until it is complete.  */
        RunGameActions() {
+              if(this.timer != null)
+                     this.timer.destroy();
               if(this.GameActionQueue.length == 0) {
                      this.RestartInteractions();
                      return;
@@ -176,7 +181,7 @@ export class GameScene extends Phaser.Scene {
               if(next.Blocking)
                      this.StopInteractions();
               if(next.Duration > 0) {
-                     this.time.addEvent({
+                     this.timer = this.time.addEvent({
                             delay:next.Duration,
                             callbackScope:this,
                             callback:() =>{
@@ -212,6 +217,15 @@ export class GameScene extends Phaser.Scene {
        MovePlayerToTile(tilex:number, tiley:number) {
               // let tiles = MoveHelper.FindMovementTiles();
        }
+
+       DisplayText(x:number, y:number, text:string) {
+              //Offset the coord to make room for the textbox
+              x -= 50;
+              y -= 20;
+              this.speech.setVisible(true)
+              .setPosition(x, y)
+              .setText(text);
+             }
 
 
     

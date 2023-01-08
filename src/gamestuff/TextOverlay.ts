@@ -5,38 +5,38 @@ import { GameScene } from "../scenes/GameScene";
 export class TextOverlay {
     gs:GameScene;
     c:Phaser.GameObjects.Container;
-    t:Phaser.GameObjects.BitmapText;
-    t2:Phaser.GameObjects.Text;
-    lt:Phaser.GameObjects.BitmapText;
-    rt:Phaser.GameObjects.BitmapText;
+    t:Phaser.GameObjects.Text;
+    lt:Phaser.GameObjects.Text;
+    rt:Phaser.GameObjects.Text;
+    ls:Phaser.GameObjects.Image;
+    rs:Phaser.GameObjects.Image;
     g:Phaser.GameObjects.Graphics;
     
     constructor(gs:GameScene) {
         this.gs = gs;
         this.c = gs.add.container(0,0).setVisible(false);
-        this.t = gs.add.bitmapText(0,0,'6px', '').setMaxWidth(200);
-        this.t2 = gs.add.text(0,0,'').setWordWrapWidth(200).setFontSize(12).setAlign('center');
-        this.lt = gs.add.bitmapText(10,12,'6px', '');
-        this.rt = gs.add.bitmapText(100,10,'6px', '');
+        this.t = gs.add.text(0,0,'').setWordWrapWidth(200).setFontSize(12).setAlign('center').setFontFamily('Arial');
+        this.lt = gs.add.text(10,12, '').setWordWrapWidth(200).setFontSize(10).setAlign('center').setFontFamily('Arial');
+        this.rt = gs.add.text(100,10, '').setWordWrapWidth(200).setFontSize(10).setAlign('center').setFontFamily('Arial');
+        this.ls = gs.add.image(0,14, 'atlas', "MouseButtons_0").setOrigin(0,0);
+        this.rs = gs.add.image(90,14, 'atlas', "MouseButtons_0").setOrigin(0,0);
         this.g = gs.add.graphics();
         this.c.add(this.g);
         this.c.add(this.t);
-        this.c.add(this.t2);
         this.c.add(this.rt);
         this.c.add(this.lt);
-        this.c.add(gs.add.image(0,12, 'atlas', "MouseButtons_0"));
-        this.c.add(gs.add.image(90,12, 'atlas', "MouseButtons_0"));
+        this.c.add(this.ls);
+        this.c.add(this.rs);
     }
 
     Reveal(e:IEntity) {
         this.c.setPosition(e.topx, e.topy).setVisible(true);
         // this.t.text = e.Description;
-        this.t2.text = e.Description;
+        this.t.text = e.Description;
         this.lt.text = e.LeftDescription;
         this.rt.text = e.RightDescription;
-        if(e.LeftDescription.trim() != '') {
-            // this.lt.
-        }
+        this.ls.setVisible(e.LeftDescription.trim() != '');
+        this.rs.setVisible(e.RightDescription.trim() != '');
 
     }
 

@@ -23,6 +23,7 @@ export class ChangeScreenEntity implements IEntity {
         this.Description = ei.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
         
     }
+    instance: EntityInstance;
 
     LeftAction(gs:GameScene) {
         gs.LoadAndRunGameActions([
@@ -31,6 +32,7 @@ export class ChangeScreenEntity implements IEntity {
     }
 
     create(gs:GameScene, instance:EntityInstance) {
+        this.instance = instance;
         this.gs = gs;
         this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
         .setOrigin(0,0)

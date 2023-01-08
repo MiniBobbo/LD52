@@ -6,6 +6,7 @@ import { BaseEntity } from "./BaseEntity";
 export class ActorEntity extends BaseEntity {
     sprite:Phaser.GameObjects.Sprite;
     create(gs:GameScene, instance:EntityInstance) {
+        this.instance = instance;
         this.gs = gs;
         this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
         .setOrigin(0,0)

@@ -1,4 +1,5 @@
 import { C } from "../C";
+import { GameEvents } from "../events/GameEvents";
 import { P } from "../helpers/MoveHelper";
 import { IMoveEntity } from "../interfaces/IMoveEntity";
 import { GameScene } from "../scenes/GameScene";
@@ -52,6 +53,7 @@ export class Player implements IMoveEntity{
 
     EndMove() {
         this.CurrentlyMoving = false;
+        this.gs.events.emit(GameEvents.FINISH_STEP);
     }
     
     InterruptMove() {

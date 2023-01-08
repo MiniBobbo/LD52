@@ -12,8 +12,11 @@ export class BaseEntity implements IEntity {
     interactZone:Phaser.GameObjects.Zone;
     gs:GameScene;
 
+    instance:EntityInstance;
+
     create(gs:GameScene, instance:EntityInstance) {
         this.gs = gs;
+        this.instance = instance;
         this.interactZone = gs.add.zone(instance.px[0], instance.px[1], instance.width, instance.height)
         .setOrigin(0,0)
         .setInteractive()
