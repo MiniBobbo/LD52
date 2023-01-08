@@ -11,7 +11,7 @@
 	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
 	"jsonVersion": "1.2.3",
 	"appBuildId": 464726,
-	"nextUid": 34,
+	"nextUid": 37,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
 	"worldGridWidth": 480,
@@ -37,6 +37,33 @@
 	"customCommands": [],
 	"flags": [],
 	"defs": { "layers": [
+		{
+			"__type": "Entities",
+			"identifier": "Lights",
+			"type": "Entities",
+			"uid": 35,
+			"gridSize": 16,
+			"guideGridWid": 0,
+			"guideGridHei": 0,
+			"displayOpacity": 1,
+			"inactiveOpacity": 0.6,
+			"hideInList": false,
+			"hideFieldsWhenInactive": true,
+			"canSelectWhenInactive": true,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"parallaxFactorX": 0,
+			"parallaxFactorY": 0,
+			"parallaxScaling": true,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [],
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": null,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		},
 		{
 			"__type": "Entities",
 			"identifier": "Entities",
@@ -774,8 +801,8 @@
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
+			"pivotX": 0.5,
+			"pivotY": 1,
 			"fieldDefs": [
 				{
 					"identifier": "frame",
@@ -808,8 +835,67 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "DepthOffset",
+					"doc": null,
+					"__type": "Int",
+					"uid": 34,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [0] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
+		},
+		{
+			"identifier": "SpotLight",
+			"uid": 36,
+			"tags": [],
+			"width": 16,
+			"height": 16,
+			"resizableX": true,
+			"resizableY": true,
+			"keepAspectRatio": true,
+			"tileOpacity": 1,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#A89A39",
+			"renderMode": "Ellipse",
+			"showName": true,
+			"tilesetId": null,
+			"tileRenderMode": "FitInside",
+			"tileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0.5,
+			"pivotY": 0.5,
+			"fieldDefs": []
 		}
 	], "tilesets": [
 		{
@@ -854,6 +940,46 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [
+				{
+					"__identifier": "Lights",
+					"__type": "Entities",
+					"__cWid": 30,
+					"__cHei": 14,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "be79bac0-7820-11ed-a399-bd8b836f4ad3",
+					"levelId": 1,
+					"layerDefUid": 35,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 3262559,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "SpotLight",
+							"__grid": [15,1],
+							"__pivot": [0.5,0.5],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#A89A39",
+							"iid": "e38e5ff0-7820-11ed-a399-5d9e55ddff5a",
+							"width": 192,
+							"height": 192,
+							"defUid": 36,
+							"px": [248,24],
+							"fieldInstances": []
+						}
+					]
+				},
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",
@@ -1064,8 +1190,8 @@
 						},
 						{
 							"__identifier": "Image",
-							"__grid": [4,8],
-							"__pivot": [0,0],
+							"__grid": [7,11],
+							"__pivot": [0.5,1],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#733E39",
@@ -1073,11 +1199,14 @@
 							"width": 112,
 							"height": 64,
 							"defUid": 32,
-							"px": [64,128],
-							"fieldInstances": [{ "__identifier": "frame", "__value": "car", "__type": "String", "__tile": null, "defUid": 33, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["car"]
-							}] }]
+							"px": [112,192],
+							"fieldInstances": [
+								{ "__identifier": "frame", "__value": "car", "__type": "String", "__tile": null, "defUid": 33, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["car"]
+								}] },
+								{ "__identifier": "DepthOffset", "__value": 32, "__type": "Int", "__tile": null, "defUid": 34, "realEditorValues": [{ "id": "V_Int", "params": [32] }] }
+							]
 						},
 						{
 							"__identifier": "POI",
@@ -1097,6 +1226,26 @@
 									"params": ["My Car"]
 								}] },
 								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 29, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Image",
+							"__grid": [15,7],
+							"__pivot": [0.5,1],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#733E39",
+							"iid": "74268c20-7820-11ed-a399-d31d4501d95b",
+							"width": 16,
+							"height": 16,
+							"defUid": 32,
+							"px": [248,128],
+							"fieldInstances": [
+								{ "__identifier": "frame", "__value": "LampPost_0", "__type": "String", "__tile": null, "defUid": 33, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["LampPost_0"]
+								}] },
+								{ "__identifier": "DepthOffset", "__value": 5, "__type": "Int", "__tile": null, "defUid": 34, "realEditorValues": [{ "id": "V_Int", "params": [5] }] }
 							]
 						}
 					]
@@ -1126,7 +1275,7 @@
 						1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
 						1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
 						1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,
-						0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,
+						0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,
 						1,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,
 						0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,0,0,0,0,0,0,0,0,1,0,0,1,
 						1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -1189,6 +1338,31 @@
 			"externalRelPath": null,
 			"fieldInstances": [],
 			"layerInstances": [
+				{
+					"__identifier": "Lights",
+					"__type": "Entities",
+					"__cWid": 30,
+					"__cHei": 14,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "be79e1d0-7820-11ed-a399-19664f0aa47d",
+					"levelId": 14,
+					"layerDefUid": 35,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 5953953,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
 				{
 					"__identifier": "Entities",
 					"__type": "Entities",

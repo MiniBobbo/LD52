@@ -4,8 +4,8 @@
 			"image": "atlas.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 142,
-				"h": 62
+				"w": 140,
+				"h": 120
 			},
 			"scale": 1,
 			"frames": [
@@ -31,6 +31,27 @@
 					}
 				},
 				{
+					"filename": "LampPost_0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 4,
+						"w": 22,
+						"h": 118
+					},
+					"frame": {
+						"x": 117,
+						"y": 1,
+						"w": 22,
+						"h": 118
+					}
+				},
+				{
 					"filename": "player_stand_0",
 					"rotated": false,
 					"trimmed": true,
@@ -45,8 +66,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 117,
-						"y": 1,
+						"x": 1,
+						"y": 63,
 						"w": 12,
 						"h": 40
 					}
@@ -66,8 +87,8 @@
 						"h": 11
 					},
 					"frame": {
-						"x": 117,
-						"y": 43,
+						"x": 15,
+						"y": 63,
 						"w": 11,
 						"h": 11
 					}
@@ -87,8 +108,8 @@
 						"h": 11
 					},
 					"frame": {
-						"x": 130,
-						"y": 43,
+						"x": 28,
+						"y": 63,
 						"w": 11,
 						"h": 11
 					}
@@ -108,8 +129,8 @@
 						"h": 8
 					},
 					"frame": {
-						"x": 131,
-						"y": 1,
+						"x": 41,
+						"y": 63,
 						"w": 10,
 						"h": 8
 					}
@@ -120,6 +141,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:be3a99b4334949f148f8581c22cd4349:4d60eae60e20fc841626a256581b7256:cbce6b53f0f49e0bf15173c25c41f876$"
+		"smartupdate": "$TexturePacker:SmartUpdate:66c66164eb2a5982ac1481b1ea5bd08c:c0f967ec18176a58bb02a0707ae0c2a6:cbce6b53f0f49e0bf15173c25c41f876$"
 	}
 }

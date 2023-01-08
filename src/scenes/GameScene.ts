@@ -25,6 +25,7 @@ export class GameScene extends Phaser.Scene {
        BGLayer:Phaser.GameObjects.Layer;
        EntityLayer:Phaser.GameObjects.Layer;
        DisplayLayer:Phaser.GameObjects.Layer;
+       LightGraphic:Phaser.GameObjects.Graphics;
        myDebug:boolean = false;
        MoveGrid:Phaser.Tilemaps.TilemapLayer;
        RunningAction:IGameAction;
@@ -67,7 +68,9 @@ export class GameScene extends Phaser.Scene {
                             }
                      } else if (e.__identifier == 'Image') {
                             let frame = e.fieldInstances.find(i=>i.__identifier == 'frame').__value;
-                            let i = this.add.image(e.px[0], e.px[1], 'atlas', frame).setDepth(e.px[1]).setOrigin(0,0);
+                            let depthOffset = e.fieldInstances.find(i=>i.__identifier == 'DepthOffset').__value as number;
+                            let i = this.add.image(e.px[0], e.px[1], 'atlas', frame).setDepth(e.px[1]-depthOffset).setOrigin(e.__pivot[0],e.__pivot[1]);
+                            // let i = this.add.image(e.px[0]+(e.width/2), e.px[1]+ e.height, 'atlas', frame).setDepth(e.px[1]-depthOffset).setOrigin(e.__pivot[0],e.__pivot[1]);
                             this.EntityLayer.add(i);
                      } else if (e.__identifier == 'ChangeScreen') {
                             let be = new ChangeScreenEntity(e);
