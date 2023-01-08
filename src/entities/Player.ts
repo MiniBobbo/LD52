@@ -9,6 +9,7 @@ export class Player implements IMoveEntity{
     gs:GameScene;
     topx:number = 0;
     topy:number = 0;
+    light:Phaser.GameObjects.Light;
 
     currentPath:P[];
     walkDuration:number = 100;
@@ -17,10 +18,10 @@ export class Player implements IMoveEntity{
     constructor(gs:GameScene, x:number, y:number) {
         this.gs = gs;
         this.sprite = gs.add.sprite(x,y,'atlas', 'player_stand_0')
-        .setSize(14,22).setOrigin(.5, 1);
+        .setSize(14,22).setOrigin(.5, 1).setPipeline('Lifght2D');
         gs.events.on('update', this.update, this);
         gs.events.on('destroy', this.destroy, this);
-
+        this.light = gs.lights.addLight(this.sprite.x, this.sprite.y, 40, 0xffffff, 1);
     }
 
     private movetween:Phaser.Tweens.Tween;
@@ -74,5 +75,6 @@ export class Player implements IMoveEntity{
         this.topx = this.sprite.x;
         this.topy = this.sprite.y - this.sprite.height;
         this.sprite.setDepth(this.sprite.y);
+        this.light.setPosition(this.sprite.x+4, this.sprite.y-3);
     }
 }

@@ -43,6 +43,7 @@ export class EntityFactory {
             let flagDefault =  e.fieldInstances.find(i=>i.__identifier == 'FlagDefault').__value as boolean;
         if(!C.checkFlag(flagRequired, flagDefault))
             ae.RemoveFromScreen();
+        ae.sprite.setPipeline('Light2D');
         return ae;
 
     }

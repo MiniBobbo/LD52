@@ -11,11 +11,13 @@ export class SpeechBox {
         this.gs = gs;
         this.c = gs.add.container(0,0).setVisible(false);
         this.t = gs.add.text(-90,-20,'').setWordWrapWidth(180).setSize(180,40)
+        .setFixedSize(180, 40)
         .setFontSize(10)
         .setStroke('0x000000', 4)
         .setAlign('center')
         .setFontFamily('Arial')
-        .setDepth(2);
+        .setDepth(2)
+        .setLineSpacing(-5);
         this.g = gs.add.graphics();
         this.c.add(this.g);
         this.c.add(this.t);
@@ -28,9 +30,10 @@ export class SpeechBox {
     Reveal(x:number, y:number, message:string) {
         x = Phaser.Math.Clamp(x, 0, this.gs.cameras.main.width - 75);
         y = Phaser.Math.Clamp(y, 0, this.gs.cameras.main.height);
-        this.c.setPosition(x, y - 40).setVisible(true);
-        // this.t.text = e.Description;
         this.t.text = message;
+        let t = this.t.getWrappedText();
+        this.c.setPosition(x, y - (5 * (t.length))).setVisible(true);
+        // this.t.text = e.Description;
 
     }
 

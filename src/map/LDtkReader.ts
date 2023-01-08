@@ -485,7 +485,7 @@ export interface Level {
 
 export interface LevelFieldInstance {
     __identifier:     any;
-    __value:          string;
+    __value:          any;
     __type:           Type;
     defUid:           number;
     realEditorValues: DefaultOverrideElement[];

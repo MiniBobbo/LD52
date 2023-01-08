@@ -10,7 +10,7 @@ import { ActorEntity } from "../ActorEntity";
 export class BoneActor extends ActorEntity {
     create(gs:GameScene, e:EntityInstance) {
         super.create(gs, e);
-        this.sprite = gs.add.sprite(e.px[0], e.px[1], 'atlas', 'Bone').setOrigin(0,0);
+        this.sprite = gs.add.sprite(e.px[0], e.px[1], 'atlas', 'Bone').setOrigin(0,0).setPipeline('Light2D');
         this.Description = 'What is that?';
         this.LeftDescription = 'Investigate';
     }

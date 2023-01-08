@@ -43,6 +43,7 @@ export class GameScene extends Phaser.Scene {
        create() {
               
               this.input.mouse.disableContextMenu();
+              this.lights.enable();
               this.CreateLayersAndDisplay();
               this.reader = new LdtkReader(this,this.cache.json.get('screens'));
               let screen = this.reader.ldtk.levels.find((l:any)=> l.identifier === C.currentScreen);
@@ -52,8 +53,14 @@ export class GameScene extends Phaser.Scene {
                this.MoveGrid =this.reader.CreateIntGridLayer(movement, 'mapts');
               //@ts-ignore
               let tiles = screen.layerInstances.find((l) => l.__identifier == 'Tiles');
-              this.bg = this.add.image(0,0, 'bgs', tiles.gridTiles[0].t).setOrigin(0,0);
+              this.bg = this.add.image(0,0, 'bgs', tiles.gridTiles[0].t).setOrigin(0,0).setPipeline('Light2D');
               this.BGLayer.add(this.bg);
+
+
+              let amb = screen.fieldInstances.find(i=>i.__identifier == 'AmbientLight').__value as number;
+              this.lights.ambientColor.r = amb;
+              this.lights.ambientColor.b = amb;
+              this.lights.ambientColor.g = amb;
               // this.bg = this.add.sprite(0,0, 'bgs', 0).setOrigin(0,0);
               entities.entityInstances.forEach(e => {
                      if(e.__identifier == 'Entity') {
@@ -63,6 +70,10 @@ export class GameScene extends Phaser.Scene {
                             be.create(this, e);
                             be.Description = e.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
                             this.Entities.push(be);
+                     } else if (e.__identifier == 'Light') {
+                            let radius = e.fieldInstances.find(i=>i.__identifier == 'Radius').__value as number;
+                            let strength = e.fieldInstances.find(i=>i.__identifier == 'Strength').__value as number;
+                            this.lights.addLight(e.px[0], e.px[1], radius, 0xffffff, strength);
                      } else if (e.__identifier == 'EntryPoint') {
                             if(e.fieldInstances.find(i=>i.__identifier == 'ID').__value == C.EntryPoint) {
                                    this.CreatePlayer(e);
@@ -71,6 +82,7 @@ export class GameScene extends Phaser.Scene {
                             let frame = e.fieldInstances.find(i=>i.__identifier == 'frame').__value;
                             let depthOffset = e.fieldInstances.find(i=>i.__identifier == 'DepthOffset').__value as number;
                             let i = this.add.image(e.px[0], e.px[1], 'atlas', frame).setDepth(e.px[1]-depthOffset).setOrigin(e.__pivot[0],e.__pivot[1]);
+                            i.setPipeline('Light2D');
                             // let i = this.add.image(e.px[0]+(e.width/2), e.px[1]+ e.height, 'atlas', frame).setDepth(e.px[1]-depthOffset).setOrigin(e.__pivot[0],e.__pivot[1]);
                             this.EntityLayer.add(i);
                      } else if (e.__identifier == 'ChangeScreen') {
@@ -163,8 +175,8 @@ export class GameScene extends Phaser.Scene {
        }
 
        private CreateLayersAndDisplay() {
-              this.BGLayer = this.add.layer().setDepth(0);
-              this.EntityLayer = this.add.layer().setDepth(1);
+              this.BGLayer = this.add.layer().setDepth(0).setPipeline('Light2D');
+              this.EntityLayer = this.add.layer().setDepth(1).setPipeline('Light2D');
               this.DisplayLayer = this.add.layer().setDepth(2);
 
               this.to = new TextOverlay(this);
