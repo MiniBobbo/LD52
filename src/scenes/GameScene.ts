@@ -47,7 +47,7 @@ export class GameScene extends Phaser.Scene {
               let entities = screen.layerInstances.find((l) => l.__identifier == 'Entities');
               //@ts-ignore
               let movement = screen.layerInstances.find((l) => l.__identifier == 'Movement');
-               this.MoveGrid =this.reader.CreateIntGridLayer(movement, 'atlas');
+               this.MoveGrid =this.reader.CreateIntGridLayer(movement, 'mapts');
               //@ts-ignore
               let tiles = screen.layerInstances.find((l) => l.__identifier == 'Tiles');
               this.bg = this.add.image(0,0, 'bgs', tiles.gridTiles[0].t).setOrigin(0,0);
