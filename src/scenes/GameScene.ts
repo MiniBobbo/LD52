@@ -6,6 +6,7 @@ import { BaseInventory } from "../entities/BaseInventory";
 import { ChangeScreenEntity } from "../entities/ChangeScreenEntity";
 import { Player } from "../entities/Player";
 import { GameEvents } from "../events/GameEvents";
+import { SpeechBox } from "../gamestuff/SpeechBox";
 import { TextOverlay } from "../gamestuff/TextOverlay";
 import { EntityFactory } from "../helpers/EntityFactory";
 import { MoveHelper, P } from "../helpers/MoveHelper";
@@ -18,7 +19,7 @@ export class GameScene extends Phaser.Scene {
        bg:Phaser.GameObjects.Image;
        to:TextOverlay;
        player:Player;
-       speech:Phaser.GameObjects.Text;
+       speech:SpeechBox;
        CurrentOverlayObject:string = '';
        debug:Phaser.GameObjects.Graphics;
        BGLayer:Phaser.GameObjects.Layer;
@@ -145,7 +146,7 @@ export class GameScene extends Phaser.Scene {
               this.DisplayLayer = this.add.layer().setDepth(2);
 
               this.to = new TextOverlay(this);
-              this.speech = this.add.text(0,0, '').setWordWrapWidth(300).setFontSize(12).setAlign('center').setFontFamily('Arial').setSize(300,100);
+              this.speech = new SpeechBox(this);
               this.DisplayLayer.add(this.to.c);
               
        }
@@ -220,12 +221,12 @@ export class GameScene extends Phaser.Scene {
 
        DisplayText(x:number, y:number, text:string) {
               //Offset the coord to make room for the textbox
-              x -= 50;
-              y -= 20;
-              this.speech.setVisible(true)
-              .setPosition(x, y)
-              .setText(text);
-             }
+              this.speech.Reveal(x,y,text);
+       }
+
+       HideText() {
+              this.speech.Hide();
+       }
 
 
     

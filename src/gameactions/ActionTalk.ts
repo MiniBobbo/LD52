@@ -14,7 +14,7 @@ export class ActionTalk implements IGameAction {
         this.text = text;
         this.Duration = duration;
         if(duration == 0) {
-            this.Duration = text.length * 2;
+            this.Duration = text.length * 60;
             if (this.Duration < 1200)
                 this.Duration = 1200;
         }
@@ -29,7 +29,7 @@ export class ActionTalk implements IGameAction {
         gs.DisplayText(this.speaker.topx, this.speaker.topy, this.text);
     }
     EndAction(gs: GameScene) {
-        gs.speech.setVisible(false);
+        gs.HideText();
     }
     Duration: number = 1000;
     Blocking: boolean = false;

@@ -17,9 +17,9 @@ export class TextOverlay {
         this.c = gs.add.container(0,0).setVisible(false);
         this.t = gs.add.text(0,0,'').setWordWrapWidth(200).setFontSize(12).setAlign('center').setFontFamily('Arial');
         this.lt = gs.add.text(10,12, '').setWordWrapWidth(200).setFontSize(10).setAlign('center').setFontFamily('Arial');
-        this.rt = gs.add.text(100,10, '').setWordWrapWidth(200).setFontSize(10).setAlign('center').setFontFamily('Arial');
+        this.rt = gs.add.text(70,12, '').setWordWrapWidth(200).setFontSize(10).setAlign('center').setFontFamily('Arial');
         this.ls = gs.add.image(0,14, 'atlas', "MouseButtons_0").setOrigin(0,0);
-        this.rs = gs.add.image(90,14, 'atlas', "MouseButtons_0").setOrigin(0,0);
+        this.rs = gs.add.image(60,14, 'atlas', "MouseButtons_1").setOrigin(0,0);
         this.g = gs.add.graphics();
         this.c.add(this.g);
         this.c.add(this.t);
