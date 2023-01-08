@@ -65,4 +65,13 @@ export class TextOverlay {
         this.ls.setVisible(false);
         this.rs.setVisible(false);
     }
+
+    SetText(message) {
+        this.t.text = message;
+        this.lt.text = '';
+        this.rt.text = '';
+        this.ls.setVisible(false);
+        this.rs.setVisible(false);
+
+    }
 }

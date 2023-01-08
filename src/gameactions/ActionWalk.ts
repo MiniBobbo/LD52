@@ -1,4 +1,5 @@
 import { throws } from "assert";
+import { C } from "../C";
 import { BaseEntity } from "../entities/BaseEntity";
 import { GameEvents } from "../events/GameEvents";
 import { MoveHelper, P } from "../helpers/MoveHelper";
@@ -13,7 +14,7 @@ export class ActionWalk implements IGameAction {
     start:{x:number, y:number};
     stepDuration:number = 200;
 
-    constructor(entity:IMoveEntity, start:{x:number, y:number}, destination:{x:number, y:number}, stepduration:number = 200) {
+    constructor(entity:IMoveEntity, start:{x:number, y:number}, destination:{x:number, y:number}, stepduration:number = C.WALK_SPEED) {
         this.e = entity;
         this.destination = destination;
         this.start = start;
@@ -27,7 +28,6 @@ export class ActionWalk implements IGameAction {
     StartAction(gs: GameScene) {
         let startTile = gs.MoveGrid.getTileAt(this.destination.x, this.destination.y);
         let playerTile = gs.MoveGrid.getTileAtWorldXY(this.start.x, this.start.y);
-        console.log(`Clicked on tile ${startTile.x}, ${startTile.y}: ${startTile.index}`);
         if(startTile.index == 1) {
                let resultTiles = MoveHelper.FindMovementTiles(gs.MoveGrid, {x:startTile.x, y:startTile.y});
                let bestPath = MoveHelper.FindMovementPath(resultTiles, {x:playerTile.x, y:playerTile.y});

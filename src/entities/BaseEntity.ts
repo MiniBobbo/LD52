@@ -5,6 +5,9 @@ import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
 
 export class BaseEntity implements IEntity {
+    ItemUsed(itemName: string): boolean {
+        return false;
+    }
     RequiredFlag: number;
     topx: number;
     topy: number;
@@ -21,12 +24,25 @@ export class BaseEntity implements IEntity {
         .setOrigin(0,0)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
+        .on('pointerover', ()=> {
+            gs.events.emit(GameEvents.START_TEXT_OVERLAY, this);
+            gs.events.emit(GameEvents.START_OVER_ENTITY, this);
+        })
+        .on('pointerout', ()=> {
+            gs.events.emit(GameEvents.END_TEXT_OVERLAY, this);
+            gs.events.emit(GameEvents.END_OVER_ENTITY, this);
+        })
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
                 if(!this.gs.AllowPlayerInteractions)
                     return;
                     event.stopPropagation();
+                    if(gs.UseItem) {
+                        if(!this.ItemUsed(gs.ItemBeingUsed.ID)) 
+                            gs.ItemBeingUsed.ItemUseFailEvent();
+                        gs.ReleaseItemToUse();
+                        return;
+                 }
+   
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                         gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')

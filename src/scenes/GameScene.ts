@@ -31,6 +31,7 @@ export class GameScene extends Phaser.Scene {
        RunningAction:IGameAction;
 
        InventoryCount:number = 0;
+       OverThisEntity:IEntity = null;
 
        //If this flag is false, the player shouldn't be allowed to interact with the world (someone is talking, an event is happening, etc.)
        //Right now I'm relying on each individual Entity to enforce this, but that is wrong...  No time to refactor it.
@@ -89,6 +90,8 @@ export class GameScene extends Phaser.Scene {
                      this.DrawDebug();
               }
 
+              this.events.on(GameEvents.START_OVER_ENTITY, this.StartOverEntity, this);
+              this.events.on(GameEvents.END_OVER_ENTITY, this.EndOverEntity, this);
               this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
               this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
               this.events.on(GameEvents.FINISH_STEP, this.RunGameActions, this);
@@ -107,6 +110,10 @@ export class GameScene extends Phaser.Scene {
                      this.RunningAction.Skip(this);
                      return;
               }
+              if(this.UseItem) {
+                     this.ReleaseItemToUse();
+                     return;
+              }
               // console.log('Scene click event fired'); 
               let px = p.worldX;
               let py = p.worldY;
@@ -116,7 +123,7 @@ export class GameScene extends Phaser.Scene {
               if(startTile.index == 1) {
                      let resultTiles = MoveHelper.FindMovementTiles(this.MoveGrid, {x:startTile.x, y:startTile.y});
                      let bestPath = MoveHelper.FindMovementPath(resultTiles, {x:playerTile.x, y:playerTile.y});
-                     this.player.StartMove(bestPath, 100);
+                     this.player.StartMove(bestPath, C.WALK_SPEED);
                      // if(this.myDebug) {
                      //        this.debug.clear();
                      //        bestPath.forEach(t => {
@@ -167,12 +174,28 @@ export class GameScene extends Phaser.Scene {
        }
 
        private StartOverlay(e:IEntity) {
+              if(this.UseItem) {
+                     this.to.SetText(`Use ${this.ItemBeingUsed.Description} on ${e.Description}` );
+                     return;
+              }
               if(this.AllowPlayerInteractions)
               this.to.Reveal(e);
        }
-       EndOverlay(e:IEntity = null) {
-              console.log('Leaving entity');
+       private EndOverlay(e:IEntity = null) {
+              if(this.UseItem) {
+                     this.to.SetText(`Use ${this.ItemBeingUsed.Description} on ` );
+                     return;
+              }
               this.to.Hide();
+       }
+       private StartOverEntity(e:IEntity) {
+              if(this.UseItem)
+                     return;
+              this.OverThisEntity = e;              
+       }
+
+       private EndOverEntity(e:IEntity) {
+              this.OverThisEntity = null;
        }
 
        /**
@@ -254,5 +277,18 @@ export class GameScene extends Phaser.Scene {
                      e.RightAction(this);
        }
 
+       UseItem:boolean = false;
+       ItemBeingUsed:BaseInventory;
+       BindItemToUse(item:BaseInventory) {
+              this.UseItem = true;
+              this.ItemBeingUsed = item;
+              this.to.SetText(`Use ${item.Description} on ` );
+       }
+
+       ReleaseItemToUse() {
+              this.UseItem = false;
+              this.ItemBeingUsed = null;
+              this.to.Hide();
+       }
     
 }

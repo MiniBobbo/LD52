@@ -19,14 +19,14 @@ export class BoneActor extends ActorEntity {
         let walkPoint = this.instance.fieldInstances.find(i=>i.__identifier == 'Destination');
         if(walkPoint != undefined) {
             let pt = walkPoint.__value as {cx:number, cy:number};
-            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}, 100));
+            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}));
         }
         gs.GameActionQueue.push(new ActionTalk(gs.player as any, 'It is a bone.  I guess I\'ll take it.'));
         gs.GameActionQueue.push(new ActionAddInventory(gs, "Bone"));
         gs.GameActionQueue.push(new ActionRemoveFromScreen(this));
 
         gs.RunGameActions();
-        gs.EndOverlay();
+        // gs.EndOverlay();
         C.setFlag('Bone', false);
     }
 

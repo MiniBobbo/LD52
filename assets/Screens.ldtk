@@ -11,7 +11,7 @@
 	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
 	"jsonVersion": "1.2.3",
 	"appBuildId": 464726,
-	"nextUid": 37,
+	"nextUid": 38,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
 	"worldGridWidth": 480,
@@ -871,7 +871,7 @@
 			]
 		},
 		{
-			"identifier": "SpotLight",
+			"identifier": "Light",
 			"uid": 36,
 			"tags": [],
 			"width": 16,
@@ -895,7 +895,40 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0.5,
 			"pivotY": 0.5,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "Strength",
+					"doc": null,
+					"__type": "Int",
+					"uid": 37,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [1] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -963,22 +996,7 @@
 					"seed": 3262559,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
-					"entityInstances": [
-						{
-							"__identifier": "SpotLight",
-							"__grid": [15,1],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#A89A39",
-							"iid": "e38e5ff0-7820-11ed-a399-5d9e55ddff5a",
-							"width": 192,
-							"height": 192,
-							"defUid": 36,
-							"px": [248,24],
-							"fieldInstances": []
-						}
-					]
+					"entityInstances": []
 				},
 				{
 					"__identifier": "Entities",

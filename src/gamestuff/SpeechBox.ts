@@ -26,6 +26,8 @@ export class SpeechBox {
     }
 
     Reveal(x:number, y:number, message:string) {
+        x = Phaser.Math.Clamp(x, 0, this.gs.cameras.main.width - 75);
+        y = Phaser.Math.Clamp(y, 0, this.gs.cameras.main.height);
         this.c.setPosition(x, y - 40).setVisible(true);
         // this.t.text = e.Description;
         this.t.text = message;

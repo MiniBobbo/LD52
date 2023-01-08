@@ -9,6 +9,10 @@ export interface IEntity {
     create(gs:GameScene, instance:EntityInstance);
     LeftAction(gs:GameScene);
     RightAction(gs:GameScene);
+    /**This is called when an item is used on this Entity.
+     * Returns true if this item handled the interaction.  Otherwise false and the item should handle the message.
+     */
+    ItemUsed(itemName:string):boolean;
 
     instance:EntityInstance;
     ID:string;

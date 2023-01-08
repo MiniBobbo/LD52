@@ -12,7 +12,7 @@ export class EScarecrow extends BaseEntity {
         let walkPoint = this.instance.fieldInstances.find(i=>i.__identifier == 'Destination');
         if(walkPoint != undefined) {
             let pt = walkPoint.__value as {cx:number, cy:number};
-            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}, 100));
+            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}));
         }
             
         gs.GameActionQueue.push(new ActionTalk(gs.player as any, 'What a creepy scarecrow.  This is long text so that we can see how the wrapping works.'));
@@ -24,5 +24,13 @@ export class EScarecrow extends BaseEntity {
             new ActionTalk(gs.player as any, 'They worked hard on that.'),
         ]);
     }
+
+    ItemUsed(itemName: string): boolean {
+        this.gs.LoadAndRunGameActions([
+            new ActionTalk(this.gs.player as any, 'Scarecrows don\'t like bones.'),
+        ]);
+        return true;
+    }
+
 
 }

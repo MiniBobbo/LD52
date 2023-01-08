@@ -24,13 +24,16 @@ export class ChangeScreenEntity implements IEntity {
         this.Description = ei.fieldInstances.find(i=>i.__identifier == 'Description').__value as string;
         
     }
+    ItemUsed(itemName: string): boolean {
+        return false;
+    }
     instance: EntityInstance;
 
     LeftAction(gs:GameScene) {
         let walkPoint = this.instance.fieldInstances.find(i=>i.__identifier == 'Destination');
         if(walkPoint != undefined && walkPoint.__value != null) {
             let pt = walkPoint.__value as {cx:number, cy:number};
-            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}, 100));
+            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}));
         }
         gs.LoadAndRunGameActions([
             new ActionChangeScreen(this.nextScreen, this.nextPosition)
@@ -47,6 +50,8 @@ export class ChangeScreenEntity implements IEntity {
         .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
         .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
+            if(!this.gs.AllowPlayerInteractions)
+            return;
             event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                     this.LeftAction(this.gs);

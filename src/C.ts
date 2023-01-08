@@ -7,6 +7,7 @@ export class C {
     static waypoint:string = '';
     static TILE_SIZE:number = 16;
     static Inventory:string[] = [];
+    static WALK_SPEED:number = 250;
 
     static MOUSE_SENSITIVITY:number = .8;
 

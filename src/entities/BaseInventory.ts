@@ -35,6 +35,10 @@ export class BaseInventory extends ActorEntity {
         this.topy = this.sprite.y - 40;
     }
 
+    ItemUseFailEvent() {
+        console.log(`Unable to use ${this.Description}`);
+    }
+
     
 
 }
