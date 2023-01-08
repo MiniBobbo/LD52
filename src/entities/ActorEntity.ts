@@ -14,6 +14,7 @@ export class ActorEntity extends BaseEntity {
         .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
         .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
+            event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                     this.LeftAction(this.gs);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')

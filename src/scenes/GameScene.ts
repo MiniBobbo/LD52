@@ -1,3 +1,5 @@
+import { Tilemaps } from "phaser";
+import { start } from "repl";
 import { C } from "../C";
 import { BaseEntity } from "../entities/BaseEntity";
 import { BaseInventory } from "../entities/BaseInventory";
@@ -6,6 +8,7 @@ import { Player } from "../entities/Player";
 import { GameEvents } from "../events/GameEvents";
 import { TextOverlay } from "../gamestuff/TextOverlay";
 import { EntityFactory } from "../helpers/EntityFactory";
+import { MoveHelper, P } from "../helpers/MoveHelper";
 import { IEntity } from "../interfaces/IEntity";
 import { IGameAction } from "../interfaces/IGameCommand";
 import { EntityInstance, LdtkReader } from "../map/LDtkReader";
@@ -22,6 +25,7 @@ export class GameScene extends Phaser.Scene {
        EntityLayer:Phaser.GameObjects.Layer;
        DisplayLayer:Phaser.GameObjects.Layer;
        myDebug:boolean = true;
+       MoveGrid:Phaser.Tilemaps.TilemapLayer;
 
        InventoryCount:number = 0;
 
@@ -41,6 +45,7 @@ export class GameScene extends Phaser.Scene {
               let entities = screen.layerInstances.find((l) => l.__identifier == 'Entities');
               //@ts-ignore
               let movement = screen.layerInstances.find((l) => l.__identifier == 'Movement');
+               this.MoveGrid =this.reader.CreateIntGridLayer(movement, 'atlas');
               //@ts-ignore
               let tiles = screen.layerInstances.find((l) => l.__identifier == 'Tiles');
               this.bg = this.add.image(0,0, 'bgs', tiles.gridTiles[0].t).setOrigin(0,0);
@@ -79,9 +84,31 @@ export class GameScene extends Phaser.Scene {
               this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
               this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
               // this.events.on
+              this.input.on('pointerdown', this.PointerDown, this);
 
               this.CreateInventory();
 
+       }
+
+       private PointerDown(p:Phaser.Input.Pointer) {
+              let px = p.worldX;
+              let py = p.worldY;
+              let startTile = this.MoveGrid.getTileAtWorldXY(px, py);
+              let playerTile = this.MoveGrid.getTileAtWorldXY(this.player.sprite.x, this.player.sprite.y);
+              console.log(`Clicked on tile ${startTile.x}, ${startTile.y}: ${startTile.index}`);
+              if(startTile.index == 1) {
+                     let resultTiles = MoveHelper.FindMovementTiles(this.MoveGrid, {x:startTile.x, y:startTile.y});
+                     let bestPath = MoveHelper.FindMovementPath(resultTiles, {x:playerTile.x, y:playerTile.y});
+                     this.player.StartMove(bestPath, 100);
+                     // if(this.myDebug) {
+                     //        this.debug.clear();
+                     //        bestPath.forEach(t => {
+                     //               this.add.text(t.x * 16, t.y * 16, t.move + '').setFontSize(10);
+                     //        }, this);
+                     // }
+
+                     
+              }
        }
 
        private CreateInventory() {
@@ -146,6 +173,8 @@ export class GameScene extends Phaser.Scene {
               }
               let next = this.GameActionQueue.shift();
               next.StartAction(this);
+              if(next.Blocking)
+                     this.StopInteractions();
               if(next.Duration > 0) {
                      this.time.addEvent({
                             delay:next.Duration,
@@ -179,5 +208,11 @@ export class GameScene extends Phaser.Scene {
               this.Entities.push(EntityFactory.CreateInventory(type, this.InventoryCount, this));
               this.InventoryCount++;
        }
+
+       MovePlayerToTile(tilex:number, tiley:number) {
+              // let tiles = MoveHelper.FindMovementTiles();
+       }
+
+
     
 }

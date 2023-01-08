@@ -23,6 +23,7 @@ export class BaseEntity implements IEntity {
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
                 if(!this.gs.AllowPlayerInteractions)
                     return;
+                    event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                     this.LeftAction(this.gs);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')
