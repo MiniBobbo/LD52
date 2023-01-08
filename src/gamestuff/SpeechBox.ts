@@ -10,13 +10,19 @@ export class SpeechBox {
     constructor(gs:GameScene) {
         this.gs = gs;
         this.c = gs.add.container(0,0).setVisible(false);
-        this.t = gs.add.text(-90,-20,'').setWordWrapWidth(180).setSize(180,40).setFontSize(10).setAlign('center').setFontFamily('Arial');
+        this.t = gs.add.text(-90,-20,'').setWordWrapWidth(180).setSize(180,40)
+        .setFontSize(10)
+        .setStroke('0x000000', 4)
+        .setAlign('center')
+        .setFontFamily('Arial')
+        .setDepth(2);
         this.g = gs.add.graphics();
         this.c.add(this.g);
         this.c.add(this.t);
         this.g.fillStyle(0x000000, .7);
         this.g.lineStyle(0x555555, 1);
-        this.g.fillRect(-100,-20,200,40);
+        // this.g.fillRect(-100,-20,200,40);
+        gs.DisplayLayer.add(this.c);
     }
 
     Reveal(x:number, y:number, message:string) {

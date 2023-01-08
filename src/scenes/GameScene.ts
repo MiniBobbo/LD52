@@ -25,8 +25,9 @@ export class GameScene extends Phaser.Scene {
        BGLayer:Phaser.GameObjects.Layer;
        EntityLayer:Phaser.GameObjects.Layer;
        DisplayLayer:Phaser.GameObjects.Layer;
-       myDebug:boolean = true;
+       myDebug:boolean = false;
        MoveGrid:Phaser.Tilemaps.TilemapLayer;
+       RunningAction:IGameAction;
 
        InventoryCount:number = 0;
 
@@ -54,7 +55,6 @@ export class GameScene extends Phaser.Scene {
               // this.bg = this.add.sprite(0,0, 'bgs', 0).setOrigin(0,0);
               entities.entityInstances.forEach(e => {
                      if(e.__identifier == 'Entity') {
-                            console.log(`Found Entity type : ${e.fieldInstances.find(i=>i.__identifier == 'ID').__value}`);
                             this.Entities.push(EntityFactory.CreateEntity(e, this));
                      } else if (e.__identifier == 'POI') {
                             let be = new BaseEntity();
@@ -65,11 +65,15 @@ export class GameScene extends Phaser.Scene {
                             if(e.fieldInstances.find(i=>i.__identifier == 'ID').__value == C.EntryPoint) {
                                    this.CreatePlayer(e);
                             }
+                     } else if (e.__identifier == 'Image') {
+                            let frame = e.fieldInstances.find(i=>i.__identifier == 'frame').__value;
+                            let i = this.add.image(e.px[0], e.px[1], 'atlas', frame).setDepth(e.px[1]).setOrigin(0,0);
+                            this.EntityLayer.add(i);
                      } else if (e.__identifier == 'ChangeScreen') {
                             let be = new ChangeScreenEntity(e);
                             be.create(this, e);
                      } if(e.__identifier == 'Actor') {
-                            console.log(`Found Entity type : ${e.fieldInstances.find(i=>i.__identifier == 'Name').__value}`);
+                            // console.log(`Found Entity type : ${e.fieldInstances.find(i=>i.__identifier == 'Name').__value}`);
                             this.Entities.push(EntityFactory.CreateActor(e, this));
                      }
               });
@@ -85,6 +89,8 @@ export class GameScene extends Phaser.Scene {
               this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
               this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
               this.events.on(GameEvents.FINISH_STEP, this.RunGameActions, this);
+              this.events.on(GameEvents.LAUNCH_LEFT_ACTION, this.LeftAction, this);
+              this.events.on(GameEvents.LAUNCH_RIGHT_ACTION, this.RightAction, this);
               // this.events.on
               this.input.on('pointerdown', this.PointerDown, this);
 
@@ -93,12 +99,17 @@ export class GameScene extends Phaser.Scene {
        }
 
        private PointerDown(p:Phaser.Input.Pointer) {
-              console.log('Scene click event fired'); 
+              if(!this.AllowPlayerInteractions) {
+                     // console.log('Interrupt');
+                     this.RunningAction.Skip(this);
+                     return;
+              }
+              // console.log('Scene click event fired'); 
               let px = p.worldX;
               let py = p.worldY;
               let startTile = this.MoveGrid.getTileAtWorldXY(px, py);
               let playerTile = this.MoveGrid.getTileAtWorldXY(this.player.sprite.x, this.player.sprite.y);
-              console.log(`Clicked on tile ${startTile.x}, ${startTile.y}: ${startTile.index}`);
+              // console.log(`Clicked on tile ${startTile.x}, ${startTile.y}: ${startTile.index}`);
               if(startTile.index == 1) {
                      let resultTiles = MoveHelper.FindMovementTiles(this.MoveGrid, {x:startTile.x, y:startTile.y});
                      let bestPath = MoveHelper.FindMovementPath(resultTiles, {x:playerTile.x, y:playerTile.y});
@@ -138,6 +149,7 @@ export class GameScene extends Phaser.Scene {
 
        private CreatePlayer(e:EntityInstance) {
               this.player = new Player(this, e.px[0], e.px[1]);
+              this.EntityLayer.add(this.player.sprite);
        }
 
        private CreateLayersAndDisplay() {
@@ -152,9 +164,11 @@ export class GameScene extends Phaser.Scene {
        }
 
        private StartOverlay(e:IEntity) {
+              if(this.AllowPlayerInteractions)
               this.to.Reveal(e);
        }
        EndOverlay(e:IEntity = null) {
+              console.log('Leaving entity');
               this.to.Hide();
        }
 
@@ -164,7 +178,10 @@ export class GameScene extends Phaser.Scene {
         * @param actions Array of actions.
         */
        LoadAndRunGameActions(actions:IGameAction[]) {
-              this.GameActionQueue = actions;
+              actions.forEach(element => {
+                     this.GameActionQueue.push(element);
+              });
+              // this.GameActionQueue = actions;s
               this.RunGameActions();
        }
 
@@ -173,20 +190,21 @@ export class GameScene extends Phaser.Scene {
        RunGameActions() {
               if(this.timer != null)
                      this.timer.destroy();
+              this.to.Hide();
               if(this.GameActionQueue.length == 0) {
                      this.RestartInteractions();
                      return;
               }
-              let next = this.GameActionQueue.shift();
-              next.StartAction(this);
-              if(next.Blocking)
-                     this.StopInteractions();
-              if(next.Duration > 0) {
+              this.RunningAction = this.GameActionQueue.shift();
+              this.RunningAction.StartAction(this);
+              // if(next.Blocking)
+              this.StopInteractions();
+              if(this.RunningAction.Duration > 0) {
                      this.timer = this.time.addEvent({
-                            delay:next.Duration,
+                            delay:this.RunningAction.Duration,
                             callbackScope:this,
                             callback:() =>{
-                                   next.EndAction(this);
+                                   this.RunningAction.EndAction(this);
                                    this.RunGameActions();
                             }
                      });
@@ -198,10 +216,6 @@ export class GameScene extends Phaser.Scene {
 
        private StopInteractions() {
               this.AllowPlayerInteractions = false;
-              //Listen for interrupts
-              this.input.on('mousedown', () => {
-                     console.log('Trying to skip.  Can\'t do that yet.');
-              });
        }
 
        private RestartInteractions() {
@@ -228,6 +242,14 @@ export class GameScene extends Phaser.Scene {
               this.speech.Hide();
        }
 
+       LeftAction(e:BaseEntity) {
+              if(this.AllowPlayerInteractions)
+                     e.LeftAction(this);
+       }
+       RightAction(e:BaseEntity) {
+              if(this.AllowPlayerInteractions)
+                     e.RightAction(this);
+       }
 
     
 }

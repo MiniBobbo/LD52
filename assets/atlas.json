@@ -4,11 +4,32 @@
 			"image": "atlas.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 14,
-				"h": 78
+				"w": 142,
+				"h": 62
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "car",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 60
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 114,
+						"h": 60
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 114,
+						"h": 60
+					}
+				},
 				{
 					"filename": "player_stand_0",
 					"rotated": false,
@@ -24,7 +45,7 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1,
+						"x": 117,
 						"y": 1,
 						"w": 12,
 						"h": 40
@@ -45,7 +66,7 @@
 						"h": 11
 					},
 					"frame": {
-						"x": 1,
+						"x": 117,
 						"y": 43,
 						"w": 11,
 						"h": 11
@@ -66,8 +87,8 @@
 						"h": 11
 					},
 					"frame": {
-						"x": 1,
-						"y": 56,
+						"x": 130,
+						"y": 43,
 						"w": 11,
 						"h": 11
 					}
@@ -87,8 +108,8 @@
 						"h": 8
 					},
 					"frame": {
-						"x": 1,
-						"y": 69,
+						"x": 131,
+						"y": 1,
 						"w": 10,
 						"h": 8
 					}
@@ -99,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2fc34f3f71f3b9dd82eeabf46c1d1ce2:bce18f9b3eeff1dfb9e9e1aeba756d94:cbce6b53f0f49e0bf15173c25c41f876$"
+		"smartupdate": "$TexturePacker:SmartUpdate:be3a99b4334949f148f8581c22cd4349:4d60eae60e20fc841626a256581b7256:cbce6b53f0f49e0bf15173c25c41f876$"
 	}
 }

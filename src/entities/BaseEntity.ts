@@ -28,9 +28,9 @@ export class BaseEntity implements IEntity {
                     return;
                     event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
-                    this.LeftAction(this.gs);
+                        gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
                     else if(p.rightButtonDown() && this.RightDescription.trim() != '')
-                    this.RightAction(this.gs);
+                        gs.events.emit(GameEvents.LAUNCH_RIGHT_ACTION, this);
                     
             }, this);
         

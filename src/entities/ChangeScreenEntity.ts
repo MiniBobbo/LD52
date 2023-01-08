@@ -1,6 +1,7 @@
 import { throws } from "assert";
 import { GameEvents } from "../events/GameEvents";
 import { ActionChangeScreen } from "../gameactions/ActionChangeScreen";
+import { ActionWalk } from "../gameactions/ActionWalk";
 import { IEntity } from "../interfaces/IEntity";
 import { EntityInstance } from "../map/LDtkReader";
 import { GameScene } from "../scenes/GameScene";
@@ -26,6 +27,11 @@ export class ChangeScreenEntity implements IEntity {
     instance: EntityInstance;
 
     LeftAction(gs:GameScene) {
+        let walkPoint = this.instance.fieldInstances.find(i=>i.__identifier == 'Destination');
+        if(walkPoint != undefined && walkPoint.__value != null) {
+            let pt = walkPoint.__value as {cx:number, cy:number};
+            gs.GameActionQueue.push(new ActionWalk(gs.player, gs.player.sprite as any, {x:pt.cx, y:pt.cy}, 100));
+        }
         gs.LoadAndRunGameActions([
             new ActionChangeScreen(this.nextScreen, this.nextPosition)
         ]);
@@ -53,10 +59,8 @@ export class ChangeScreenEntity implements IEntity {
     }
 
     RightAction(gs: GameScene) {
-        throw new Error("Method not implemented.");
     }
     dispose() {
-        throw new Error("Method not implemented.");
     }
     ID: string;
     Description: string = '';

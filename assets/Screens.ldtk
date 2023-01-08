@@ -11,7 +11,7 @@
 	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
 	"jsonVersion": "1.2.3",
 	"appBuildId": 464726,
-	"nextUid": 32,
+	"nextUid": 34,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
 	"worldGridWidth": 480,
@@ -750,6 +750,66 @@
 					"tilesetUid": null
 				}
 			]
+		},
+		{
+			"identifier": "Image",
+			"uid": 32,
+			"tags": [],
+			"width": 16,
+			"height": 16,
+			"resizableX": true,
+			"resizableY": true,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#733E39",
+			"renderMode": "Rectangle",
+			"showName": true,
+			"tilesetId": null,
+			"tileRenderMode": "FitInside",
+			"tileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "frame",
+					"doc": null,
+					"__type": "String",
+					"uid": 33,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -837,9 +897,9 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": { "cx": 11, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+								{ "__identifier": "Destination", "__value": { "cx": 13, "cy": 11 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["11,10"]
+									"params": ["13,11"]
 								}] }
 							]
 						},
@@ -862,9 +922,9 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": { "cx": 9, "cy": 9 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+								{ "__identifier": "Destination", "__value": { "cx": 13, "cy": 11 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["9,9"]
+									"params": ["13,11"]
 								}] }
 							]
 						},
@@ -898,7 +958,7 @@
 						},
 						{
 							"__identifier": "EntryPoint",
-							"__grid": [1,11],
+							"__grid": [4,7],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
@@ -907,7 +967,7 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 11,
-							"px": [16,176],
+							"px": [64,112],
 							"fieldInstances": [{ "__identifier": "ID", "__value": 1, "__type": "Int", "__tile": null, "defUid": 12, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }]
 						},
 						{
@@ -950,26 +1010,6 @@
 							]
 						},
 						{
-							"__identifier": "POI",
-							"__grid": [18,4],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#F6757A",
-							"iid": "3a5029b0-7820-11ed-a399-91ab0cfe450d",
-							"width": 48,
-							"height": 64,
-							"defUid": 15,
-							"px": [288,64],
-							"fieldInstances": [
-								{ "__identifier": "Description", "__value": "Road", "__type": "String", "__tile": null, "defUid": 16, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Road"]
-								}] },
-								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 29, "realEditorValues": [] }
-							]
-						},
-						{
 							"__identifier": "Actor",
 							"__grid": [10,12],
 							"__pivot": [0,0],
@@ -999,27 +1039,64 @@
 						},
 						{
 							"__identifier": "ChangeScreen",
-							"__grid": [26,7],
+							"__grid": [26,6],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#EAD4AA",
 							"iid": "80f97ea0-7820-11ed-a399-6da6dcdc3acc",
-							"width": 48,
-							"height": 96,
+							"width": 64,
+							"height": 112,
 							"defUid": 19,
-							"px": [416,112],
+							"px": [416,96],
 							"fieldInstances": [
 								{ "__identifier": "NextScreen", "__value": 1, "__type": "Int", "__tile": null, "defUid": 20, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
 								{ "__identifier": "Position", "__value": 1, "__type": "Int", "__tile": null, "defUid": 21, "realEditorValues": [] },
-								{ "__identifier": "Description", "__value": "Screen 2", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
+								{ "__identifier": "Description", "__value": "This is the second screen", "__type": "String", "__tile": null, "defUid": 22, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Screen 2"]
+									"params": ["This is the second screen"]
 								}] },
 								{ "__identifier": "Destination", "__value": { "cx": 25, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 31, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["25,10"]
 								}] }
+							]
+						},
+						{
+							"__identifier": "Image",
+							"__grid": [4,8],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#733E39",
+							"iid": "24ddb6d0-7820-11ed-a399-c72d67fa00e7",
+							"width": 112,
+							"height": 64,
+							"defUid": 32,
+							"px": [64,128],
+							"fieldInstances": [{ "__identifier": "frame", "__value": "car", "__type": "String", "__tile": null, "defUid": 33, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["car"]
+							}] }]
+						},
+						{
+							"__identifier": "POI",
+							"__grid": [5,9],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#F6757A",
+							"iid": "3410ad30-7820-11ed-a399-8b1c01971556",
+							"width": 80,
+							"height": 32,
+							"defUid": 15,
+							"px": [80,144],
+							"fieldInstances": [
+								{ "__identifier": "Description", "__value": "My Car", "__type": "String", "__tile": null, "defUid": 16, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["My Car"]
+								}] },
+								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 29, "realEditorValues": [] }
 							]
 						}
 					]
@@ -1047,14 +1124,14 @@
 						0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,
 						1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
-						1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,
-						1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,
-						0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,
-						1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
-						1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,
-						0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,
-						1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-						1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+						1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
+						1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,
+						0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,
+						1,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,
+						0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,0,0,0,0,0,0,0,0,1,0,0,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 						
 					],
 					"autoLayerTiles": [],
@@ -1155,7 +1232,10 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+								{ "__identifier": "Destination", "__value": { "cx": 13, "cy": 11 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["13,11"]
+								}] }
 							]
 						},
 						{
@@ -1177,7 +1257,10 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+								{ "__identifier": "Destination", "__value": { "cx": 8, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["8,10"]
+								}] }
 							]
 						},
 						{
@@ -1199,7 +1282,10 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+								{ "__identifier": "Destination", "__value": { "cx": 6, "cy": 7 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["6,7"]
+								}] }
 							]
 						},
 						{
@@ -1249,7 +1335,10 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 27, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": null, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [] }
+								{ "__identifier": "Destination", "__value": { "cx": 3, "cy": 4 }, "__type": "Point", "__tile": null, "defUid": 28, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["3,4"]
+								}] }
 							]
 						},
 						{

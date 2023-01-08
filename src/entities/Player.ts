@@ -47,7 +47,10 @@ export class Player implements IMoveEntity{
             y:nextTile.y * C.TILE_SIZE,
             duration:this.walkDuration,
             callbackScope:this,
-            onComplete:() => {this.MoveStep();}
+            onComplete:() => {
+                this.MoveStep();
+                this.gs.events.emit(GameEvents.ENTITY_CHANGE_TILE, this, nextTile);
+            }
         });
     }
 
@@ -70,5 +73,6 @@ export class Player implements IMoveEntity{
     update() {
         this.topx = this.sprite.x;
         this.topy = this.sprite.y - this.sprite.height;
+        this.sprite.setDepth(this.sprite.y);
     }
 }

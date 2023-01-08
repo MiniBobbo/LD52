@@ -22,6 +22,8 @@ export class ActionTalk implements IGameAction {
     
     Skip(gs: GameScene) {
         this.EndAction(gs);
+        gs.timer.destroy();
+        gs.RunGameActions();
     }
 
     StartAction(gs: GameScene) {
