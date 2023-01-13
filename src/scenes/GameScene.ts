@@ -1,11 +1,11 @@
-import { Tilemaps } from "phaser";
-import { start } from "repl";
 import { C } from "../C";
 import { BaseEntity } from "../entities/BaseEntity";
 import { BaseInventory } from "../entities/BaseInventory";
 import { ChangeScreenEntity } from "../entities/ChangeScreenEntity";
 import { Player } from "../entities/Player";
 import { GameEvents } from "../events/GameEvents";
+import { FSM, IFSM } from "../FSM/FSM";
+import { FSMNothingSelected } from "../FSM/FSMNothingSelected";
 import { SpeechBox } from "../gamestuff/SpeechBox";
 import { TextOverlay } from "../gamestuff/TextOverlay";
 import { EntityFactory } from "../helpers/EntityFactory";
@@ -14,7 +14,8 @@ import { IEntity } from "../interfaces/IEntity";
 import { IGameAction } from "../interfaces/IGameCommand";
 import { EntityInstance, LdtkReader } from "../map/LDtkReader";
 
-export class GameScene extends Phaser.Scene {
+export class GameScene extends Phaser.Scene implements IFSM{
+       fsm: FSM;
        reader:LdtkReader;
        bg:Phaser.GameObjects.Image;
        to:TextOverlay;
@@ -41,7 +42,7 @@ export class GameScene extends Phaser.Scene {
 
        Entities:IEntity[] = [];
        create() {
-              
+              this.fsm = new FSM(this);
               this.input.mouse.disableContextMenu();
               this.lights.enable();
               this.CreateLayersAndDisplay();
@@ -103,18 +104,19 @@ export class GameScene extends Phaser.Scene {
                      this.DrawDebug();
               }
 
-              this.events.on(GameEvents.START_OVER_ENTITY, this.StartOverEntity, this);
-              this.events.on(GameEvents.END_OVER_ENTITY, this.EndOverEntity, this);
-              this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
-              this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
+              // this.events.on(GameEvents.START_OVER_ENTITY, this.StartOverEntity, this);
+              // this.events.on(GameEvents.END_OVER_ENTITY, this.EndOverEntity, this);
+              // this.events.on(GameEvents.START_TEXT_OVERLAY, this.StartOverlay, this);
+              // this.events.on(GameEvents.END_TEXT_OVERLAY, this.EndOverlay, this);
               this.events.on(GameEvents.FINISH_STEP, this.RunGameActions, this);
               this.events.on(GameEvents.LAUNCH_LEFT_ACTION, this.LeftAction, this);
               this.events.on(GameEvents.LAUNCH_RIGHT_ACTION, this.RightAction, this);
-              // this.events.on
-              this.input.on('pointerdown', this.PointerDown, this);
-
+              this.fsm.addModule('nothingselected', new FSMNothingSelected(this, this));
+              this.fsm.changeModule('nothingselected');
               this.CreateInventory();
-
+       }
+       changeFSM(nextFSM: string) {
+              this.fsm.changeModule(nextFSM);
        }
 
        private PointerDown(p:Phaser.Input.Pointer) {

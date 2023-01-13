@@ -47,16 +47,18 @@ export class ChangeScreenEntity implements IEntity {
         .setOrigin(0,0)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
-        .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
-            if(!this.gs.AllowPlayerInteractions)
-            return;
-            event.stopPropagation();
-                    if(p.leftButtonDown() && this.LeftDescription.trim() != '')
-                    this.LeftAction(this.gs);
+        .on('pointerover', ()=> {gs.events.emit(GameEvents.OVER_ENTITY, this)})
+        .on('pointerout', ()=> {gs.events.emit(GameEvents.OUT_ENTITY, this)})
+        .on('pointerdown', () => {gs.events.emit(GameEvents.CLICK_ENTITY, this)});
+        
+        // (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
+        //     if(!this.gs.AllowPlayerInteractions)
+        //     return;
+        //     event.stopPropagation();
+        //             if(p.leftButtonDown() && this.LeftDescription.trim() != '')
+        //             this.LeftAction(this.gs);
                     
-            }, this);
+        //     }, this);
         
         this.topx = this.interactZone.getTopCenter().x;
         this.topy = this.interactZone.getTopCenter().y;

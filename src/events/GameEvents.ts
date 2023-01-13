@@ -1,8 +1,8 @@
 export enum GameEvents {
-    START_TEXT_OVERLAY = 'starttextoverlay',
-    END_TEXT_OVERLAY = 'endtextoverlay',
-    START_OVER_ENTITY = 'startoverentitiy',
-    END_OVER_ENTITY = 'endoverentity',
+    OVER_ENTITY = 'overentity',
+    OUT_ENTITY = 'overentity',
+    CLICK_ENTITY = 'clickentity',
+    CLICK_BOARD = 'clickboard',
     TALK = 'talk',
     FINISH_STEP= 'finishstep',
     ADD_INVENTORY = 'addinventory',

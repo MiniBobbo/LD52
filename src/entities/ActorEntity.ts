@@ -12,16 +12,16 @@ export class ActorEntity extends BaseEntity {
         .setOrigin(.5,1)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
-        .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
-            event.stopPropagation();
-                    if(p.leftButtonDown() && this.LeftDescription.trim() != '')
-                        gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
-                    else if(p.rightButtonDown() && this.RightDescription.trim() != '')
-                        gs.events.emit(GameEvents.LAUNCH_RIGHT_ACTION, this);
+        .on('pointerover', ()=> {gs.events.emit(GameEvents.OVER_ENTITY, this)})
+        .on('pointerout', ()=> {gs.events.emit(GameEvents.OUT_ENTITY, this)})
+        .on('pointerdown', () => {gs.events.emit(GameEvents.CLICK_ENTITY, this)});
+            // event.stopPropagation();
+            //         if(p.leftButtonDown() && this.LeftDescription.trim() != '')
+            //             gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
+            //         else if(p.rightButtonDown() && this.RightDescription.trim() != '')
+            //             gs.events.emit(GameEvents.LAUNCH_RIGHT_ACTION, this);
 
-            }, this);
+            // }, this);
         gs.events.on('update', this.update, this);
         gs.events.on('destroy', this.destroy, this);
         this.topx = this.interactZone.getTopCenter().x;
