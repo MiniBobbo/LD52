@@ -12,9 +12,12 @@ export class BaseInventory extends ActorEntity {
         // .setOrigin(0,0)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerout', ()=> {gs.events.emit(GameEvents.END_TEXT_OVERLAY, this)})
+        .on('pointerover', ()=> {gs.events.emit(GameEvents.OVER_ENTITY, this)})
+        .on('pointerout', ()=> {gs.events.emit(GameEvents.OUT_ENTITY, this)})
         .on('pointerdown', (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
+            gs.events.emit(GameEvents.CLICK_ENTITY, this);
+            return;
+            
             event.stopPropagation();
                     if(p.leftButtonDown() && this.LeftDescription.trim() != '')
                         gs.events.emit(GameEvents.LAUNCH_LEFT_ACTION, this);
