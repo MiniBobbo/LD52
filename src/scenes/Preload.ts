@@ -71,6 +71,7 @@ export class Preload extends Phaser.Scene {
         this.load.bitmapFont('8px', '8ptfont_0.png', '8ptfont.fnt');
         this.load.multiatlas('atlas', 'atlas.json');
         this.load.image('pointer', 'pointer.png');
+        this.load.image('tree', 'tree.png');
         this.load.image('Mockup2');
         this.load.spritesheet('bgs', 'scenes/Scenes.png', {frameWidth:480, frameHeight:480});
     }
