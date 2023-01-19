@@ -1,6 +1,6 @@
 export enum GameEvents {
     OVER_ENTITY = 'overentity',
-    OUT_ENTITY = 'overentity',
+    OUT_ENTITY = 'outentity',
     CLICK_ENTITY = 'clickentity',
     CLICK_BOARD = 'clickboard',
     TALK = 'talk',

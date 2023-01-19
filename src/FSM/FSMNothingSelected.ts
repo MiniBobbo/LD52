@@ -15,28 +15,35 @@ export class FSMNothingSelected extends FSMModule {
         this.gs.events.on(GameEvents.CLICK_ENTITY, this.SelectEntity, this);
         this.gs.events.on(GameEvents.OVER_ENTITY, this.OverEntity, this);
         this.gs.events.on(GameEvents.OUT_ENTITY, this.OutEntity, this);
+        // this.gs.input.on('pointerover', (p:Phaser.Input.Pointer, over:Phaser.GameObjects.GameObject[])=> {
+        //     over.forEach(element => {
+        //         console.log(`Over ${element.name}`);
+        //     });
+        // }, this);
 
     }
-    OutEntity(entity:BaseEntity, p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData) {
+    OutEntity(data:{entity:BaseEntity, p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData}) {
         this.gs.to.Hide();
         this.gs.OverThisEntity = null;
-        // e.stopPropagation();
-        console.log(`Out ${entity.Description}`);
+        // data.e.stopPropagation();
+        console.log(`Out ${data.entity.Description}, event missing? ${data.e===undefined}`);
+
 
     }
 
     OverEntity(data:{entity:BaseEntity, p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData}) {
         this.gs.to.Reveal(data.entity);
         this.gs.OverThisEntity = data.entity;
-        // e.stopPropagation();
-        console.log(`Over ${data.entity.Description}`);
-
+        // data.e.stopPropagation();
+        console.log(`Over ${data.entity.Description}, event missing? ${data.e===undefined}`);
+        if(data.e ===undefined)
+            console.log('event missing.');  
     }
 
-    SelectEntity(entity:BaseEntity, p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData) {
+    SelectEntity(data:{entity:BaseEntity, p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData}) {
+        console.log(`Clicked ${data.entity.Description}, event missing? ${data.e===undefined}`);
 
-        console.log(`Clicked ${entity.Description}`);
-        e.stopPropagation();
+        data.e.stopPropagation();
     }
 
     moduleEnd(args: any): void {

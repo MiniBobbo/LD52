@@ -13,7 +13,7 @@ class Main extends Phaser.Game {
       type: Phaser.WEBGL,
       width: 480,
       height: 270,
-      zoom:2,
+      zoom:1,
       physics: {
         default: 'arcade',
         arcade: {

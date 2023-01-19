@@ -27,7 +27,7 @@ export class GameScene extends Phaser.Scene implements IFSM{
        EntityLayer:Phaser.GameObjects.Layer;
        DisplayLayer:Phaser.GameObjects.Layer;
        LightGraphic:Phaser.GameObjects.Graphics;
-       myDebug:boolean = false;
+       myDebug:boolean = true;
        MoveGrid:Phaser.Tilemaps.TilemapLayer;
        RunningAction:IGameAction;
 

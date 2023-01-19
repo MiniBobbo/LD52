@@ -47,9 +47,9 @@ export class ChangeScreenEntity implements IEntity {
         .setOrigin(0,0)
         .setInteractive()
         // .on('gameobjectover', ()=> {gs.events.emit(GameEvents.START_TEXT_OVERLAY, this)})
-        .on('pointerover', ()=> {gs.events.emit(GameEvents.OVER_ENTITY, this)})
-        .on('pointerout', ()=> {gs.events.emit(GameEvents.OUT_ENTITY, this)})
-        .on('pointerdown', () => {gs.events.emit(GameEvents.CLICK_ENTITY, this)});
+        .on('pointerover', (p:Phaser.Input.Pointer, x:number, y:number, e:Phaser.Types.Input.EventData) => {gs.events.emit(GameEvents.OVER_ENTITY, {entity:this, p:p, e:e})})
+        .on('pointerout', (p:Phaser.Input.Pointer, e:Phaser.Types.Input.EventData) => {gs.events.emit(GameEvents.OUT_ENTITY, {entity:this, p:p, e:e})})
+        .on('pointerdown',(p:Phaser.Input.Pointer, x:number, y:number, e:Phaser.Types.Input.EventData) => {gs.events.emit(GameEvents.CLICK_ENTITY, {entity:this, p:p, e:e})})
         
         // (p:Phaser.Input.Pointer, x:number, y:number, event:Phaser.Types.Input.EventData)=> {
         //     if(!this.gs.AllowPlayerInteractions)

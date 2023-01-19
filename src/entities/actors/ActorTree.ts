@@ -10,7 +10,8 @@ import { ActorEntity } from "../ActorEntity";
 export class ActorTree extends ActorEntity {
     create(gs:GameScene, e:EntityInstance) {
         super.create(gs, e);
-        this.sprite = gs.add.sprite(e.px[0], e.px[1], 'atlas', 'tree_sway_0').setOrigin(.5,1).setPipeline('Light2D');
+        this.sprite = gs.add.sprite(e.px[0] + e.width/2, e.px[1] + e.height/2, 'atlas', 'tree_sway_0')
+        .setPipeline('Light2D');
         this.Description = 'Tree';
         this.LeftDescription = 'Look at';
     }

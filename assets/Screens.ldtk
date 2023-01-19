@@ -5,12 +5,11 @@
 		"doc": "https://ldtk.io/json",
 		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
 		"appAuthor": "Sebastien 'deepnight' Benard",
-		"appVersion": "1.2.3",
+		"appVersion": "1.1.3",
 		"url": "https://ldtk.io"
 	},
-	"iid": "c929ecc0-7820-11ed-a399-c16706110ea9",
-	"jsonVersion": "1.2.3",
-	"appBuildId": 464726,
+	"jsonVersion": "1.1.3",
+	"appBuildId": 458364,
 	"nextUid": 47,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "GridVania",
@@ -28,13 +27,11 @@
 	"exportTiled": false,
 	"simplifiedExport": false,
 	"imageExportMode": "None",
-	"exportLevelBg": true,
 	"pngFilePattern": null,
 	"backupOnSave": false,
 	"backupLimit": 10,
 	"levelNamePattern": "Level_%idx",
 	"tutorialDesc": null,
-	"customCommands": [],
 	"flags": [],
 	"defs": { "layers": [
 		{
@@ -49,7 +46,6 @@
 			"inactiveOpacity": 0.2,
 			"hideInList": false,
 			"hideFieldsWhenInactive": false,
-			"canSelectWhenInactive": false,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -58,6 +54,7 @@
 			"requiredTags": [],
 			"excludedTags": [],
 			"intGridValues": [],
+			"autoTilesetDefUid": null,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
 			"tilesetDefUid": null,
@@ -76,7 +73,6 @@
 			"inactiveOpacity": 0.5,
 			"hideInList": false,
 			"hideFieldsWhenInactive": false,
-			"canSelectWhenInactive": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -85,6 +81,7 @@
 			"requiredTags": [],
 			"excludedTags": [],
 			"intGridValues": [{ "value": 1, "identifier": "Walk", "color": "#0099DB" }],
+			"autoTilesetDefUid": null,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
 			"tilesetDefUid": null,
@@ -103,7 +100,6 @@
 			"inactiveOpacity": 1,
 			"hideInList": false,
 			"hideFieldsWhenInactive": false,
-			"canSelectWhenInactive": true,
 			"pxOffsetX": 0,
 			"pxOffsetY": 0,
 			"parallaxFactorX": 0,
@@ -112,6 +108,7 @@
 			"requiredTags": [],
 			"excludedTags": [],
 			"intGridValues": [],
+			"autoTilesetDefUid": 8,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
 			"tilesetDefUid": 8,
@@ -136,6 +133,7 @@
 			"renderMode": "Rectangle",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -147,7 +145,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "ID",
-					"doc": null,
 					"__type": "String",
 					"uid": 7,
 					"type": "F_String",
@@ -157,9 +154,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -179,7 +174,6 @@
 				},
 				{
 					"identifier": "FlagRequired",
-					"doc": null,
 					"__type": "String",
 					"uid": 26,
 					"type": "F_String",
@@ -189,9 +183,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "NameAndValue",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -214,7 +206,6 @@
 				},
 				{
 					"identifier": "FlagDefault",
-					"doc": null,
 					"__type": "Bool",
 					"uid": 27,
 					"type": "F_Bool",
@@ -224,9 +215,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -249,7 +238,6 @@
 				},
 				{
 					"identifier": "Destination",
-					"doc": null,
 					"__type": "Point",
 					"uid": 28,
 					"type": "F_Point",
@@ -259,9 +247,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "PointPath",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -298,6 +284,7 @@
 			"renderMode": "Rectangle",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -309,7 +296,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "ID",
-					"doc": null,
 					"__type": "Int",
 					"uid": 12,
 					"type": "F_Int",
@@ -319,9 +305,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -358,6 +342,7 @@
 			"renderMode": "Rectangle",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -369,7 +354,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "Description",
-					"doc": null,
 					"__type": "String",
 					"uid": 16,
 					"type": "F_String",
@@ -379,9 +363,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -401,7 +383,6 @@
 				},
 				{
 					"identifier": "Destination",
-					"doc": null,
 					"__type": "Point",
 					"uid": 29,
 					"type": "F_Point",
@@ -411,9 +392,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "PointPath",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -450,18 +429,18 @@
 			"renderMode": "Rectangle",
 			"showName": false,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "MoveLastOne",
-			"pivotX": 0.5,
-			"pivotY": 1,
+			"pivotX": 0,
+			"pivotY": 0,
 			"fieldDefs": [
 				{
 					"identifier": "Name",
-					"doc": null,
 					"__type": "String",
 					"uid": 18,
 					"type": "F_String",
@@ -471,9 +450,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": false,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -493,7 +470,6 @@
 				},
 				{
 					"identifier": "FlagRequired",
-					"doc": null,
 					"__type": "String",
 					"uid": 24,
 					"type": "F_String",
@@ -503,9 +479,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "NameAndValue",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -528,7 +502,6 @@
 				},
 				{
 					"identifier": "FlagDefault",
-					"doc": null,
 					"__type": "Bool",
 					"uid": 25,
 					"type": "F_Bool",
@@ -538,9 +511,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -563,7 +534,6 @@
 				},
 				{
 					"identifier": "Destination",
-					"doc": null,
 					"__type": "Point",
 					"uid": 30,
 					"type": "F_Point",
@@ -573,9 +543,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "PointPath",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -612,6 +580,7 @@
 			"renderMode": "Rectangle",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -623,7 +592,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "Position",
-					"doc": null,
 					"__type": "Int",
 					"uid": 21,
 					"type": "F_Int",
@@ -633,9 +601,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -655,7 +621,6 @@
 				},
 				{
 					"identifier": "Description",
-					"doc": null,
 					"__type": "String",
 					"uid": 22,
 					"type": "F_String",
@@ -665,9 +630,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -687,7 +650,6 @@
 				},
 				{
 					"identifier": "Destination",
-					"doc": null,
 					"__type": "Point",
 					"uid": 31,
 					"type": "F_Point",
@@ -697,9 +659,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "PointPath",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -719,7 +679,6 @@
 				},
 				{
 					"identifier": "NextScreen",
-					"doc": null,
 					"__type": "String",
 					"uid": 46,
 					"type": "F_String",
@@ -729,9 +688,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -768,6 +725,7 @@
 			"renderMode": "Rectangle",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -779,7 +737,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "frame",
-					"doc": null,
 					"__type": "String",
 					"uid": 33,
 					"type": "F_String",
@@ -789,9 +746,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -811,7 +766,6 @@
 				},
 				{
 					"identifier": "DepthOffset",
-					"doc": null,
 					"__type": "Int",
 					"uid": 34,
 					"type": "F_Int",
@@ -821,9 +775,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "ValueOnly",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -860,6 +812,7 @@
 			"renderMode": "Ellipse",
 			"showName": true,
 			"tilesetId": null,
+			"tileId": null,
 			"tileRenderMode": "FitInside",
 			"tileRect": null,
 			"nineSliceBorders": [],
@@ -871,7 +824,6 @@
 			"fieldDefs": [
 				{
 					"identifier": "Strength",
-					"doc": null,
 					"__type": "Int",
 					"uid": 37,
 					"type": "F_Int",
@@ -881,9 +833,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -903,7 +853,6 @@
 				},
 				{
 					"identifier": "Radius",
-					"doc": null,
 					"__type": "Int",
 					"uid": 41,
 					"type": "F_Int",
@@ -913,9 +862,7 @@
 					"arrayMaxLength": null,
 					"editorDisplayMode": "Hidden",
 					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
 					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
 					"editorCutLongValues": true,
 					"editorTextSuffix": null,
 					"editorTextPrefix": null,
@@ -958,7 +905,6 @@
 	], "enums": [], "externalEnums": [], "levelFields": [
 		{
 			"identifier": "AmbientLight",
-			"doc": null,
 			"__type": "Float",
 			"uid": 40,
 			"type": "F_Float",
@@ -968,9 +914,7 @@
 			"arrayMaxLength": null,
 			"editorDisplayMode": "Hidden",
 			"editorDisplayPos": "Above",
-			"editorLinkStyle": "StraightArrow",
 			"editorAlwaysShow": false,
-			"editorShowInWorld": true,
 			"editorCutLongValues": true,
 			"editorTextSuffix": null,
 			"editorTextPrefix": null,
@@ -990,7 +934,6 @@
 		},
 		{
 			"identifier": "PlayerLight",
-			"doc": null,
 			"__type": "Bool",
 			"uid": 44,
 			"type": "F_Bool",
@@ -1000,9 +943,7 @@
 			"arrayMaxLength": null,
 			"editorDisplayMode": "Hidden",
 			"editorDisplayPos": "Above",
-			"editorLinkStyle": "StraightArrow",
 			"editorAlwaysShow": false,
-			"editorShowInWorld": true,
 			"editorCutLongValues": true,
 			"editorTextSuffix": null,
 			"editorTextPrefix": null,
@@ -1206,8 +1147,8 @@
 						},
 						{
 							"__identifier": "Actor",
-							"__grid": [10,11],
-							"__pivot": [0.5,1],
+							"__grid": [10,12],
+							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
@@ -1438,7 +1379,7 @@
 					"entityInstances": []
 				}
 			],
-			"__neighbours": [{ "levelIid": "bd7a88c0-7820-11ed-a399-a9afc88610a4", "dir": "e" }]
+			"__neighbours": [{ "levelIid": "bd7a88c0-7820-11ed-a399-a9afc88610a4", "levelUid": 14, "dir": "e" }]
 		},
 		{
 			"identifier": "Level_1",
@@ -1708,7 +1649,7 @@
 					"entityInstances": []
 				}
 			],
-			"__neighbours": [ { "levelIid": "ee318f10-7820-11ed-88b2-2b1ce0b8a7b8", "dir": "w" }, { "levelIid": "21630f90-7820-11ed-963b-4fc72887f211", "dir": "e" } ]
+			"__neighbours": [ { "levelIid": "ee318f10-7820-11ed-88b2-2b1ce0b8a7b8", "levelUid": 1, "dir": "w" }, { "levelIid": "21630f90-7820-11ed-963b-4fc72887f211", "levelUid": 43, "dir": "e" } ]
 		},
 		{
 			"identifier": "FrontYard",
@@ -1813,8 +1754,8 @@
 						},
 						{
 							"__identifier": "Actor",
-							"__grid": [5,9],
-							"__pivot": [0.5,1],
+							"__grid": [5,5],
+							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
@@ -1822,7 +1763,7 @@
 							"width": 32,
 							"height": 80,
 							"defUid": 17,
-							"px": [88,160],
+							"px": [88,80],
 							"fieldInstances": [
 								{ "__identifier": "Name", "__value": "Tree", "__type": "String", "__tile": null, "defUid": 18, "realEditorValues": [{
 									"id": "V_String",
@@ -1835,8 +1776,8 @@
 						},
 						{
 							"__identifier": "Actor",
-							"__grid": [10,10],
-							"__pivot": [0.5,1],
+							"__grid": [10,9],
+							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
@@ -1844,7 +1785,7 @@
 							"width": 32,
 							"height": 32,
 							"defUid": 17,
-							"px": [168,176],
+							"px": [168,144],
 							"fieldInstances": [
 								{ "__identifier": "Name", "__value": "Groundskeeper", "__type": "String", "__tile": null, "defUid": 18, "realEditorValues": [{
 									"id": "V_String",
@@ -1852,9 +1793,9 @@
 								}] },
 								{ "__identifier": "FlagRequired", "__value": "All", "__type": "String", "__tile": null, "defUid": 24, "realEditorValues": [] },
 								{ "__identifier": "FlagDefault", "__value": true, "__type": "Bool", "__tile": null, "defUid": 25, "realEditorValues": [] },
-								{ "__identifier": "Destination", "__value": { "cx": 12, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 30, "realEditorValues": [{
+								{ "__identifier": "Destination", "__value": { "cx": 13, "cy": 10 }, "__type": "Point", "__tile": null, "defUid": 30, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["12,10"]
+									"params": ["13,10"]
 								}] }
 							]
 						}
@@ -1925,7 +1866,7 @@
 					"entityInstances": []
 				}
 			],
-			"__neighbours": [{ "levelIid": "21630f90-7820-11ed-963b-4fc72887f211", "dir": "w" }]
+			"__neighbours": [{ "levelIid": "21630f90-7820-11ed-963b-4fc72887f211", "levelUid": 43, "dir": "w" }]
 		},
 		{
 			"identifier": "Driveway",
@@ -2053,8 +1994,8 @@
 						},
 						{
 							"__identifier": "Actor",
-							"__grid": [12,9],
-							"__pivot": [0.5,1],
+							"__grid": [12,10],
+							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
@@ -2143,7 +2084,7 @@
 					"entityInstances": []
 				}
 			],
-			"__neighbours": [ { "levelIid": "bd7a88c0-7820-11ed-a399-a9afc88610a4", "dir": "w" }, { "levelIid": "93dd2510-7820-11ed-963b-b3facd6bca1c", "dir": "e" } ]
+			"__neighbours": [ { "levelIid": "bd7a88c0-7820-11ed-a399-a9afc88610a4", "levelUid": 14, "dir": "w" }, { "levelIid": "93dd2510-7820-11ed-963b-b3facd6bca1c", "levelUid": 45, "dir": "e" } ]
 		}
 	],
 	"worlds": []
