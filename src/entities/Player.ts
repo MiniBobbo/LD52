@@ -18,9 +18,9 @@ export class Player implements IMoveEntity{
 
     constructor(gs:GameScene, x:number, y:number, addLight:boolean = false) {
         this.gs = gs;
-        this.sprite = gs.add.sprite(x,y,'atlas', 'player_stand_0')
+        this.sprite = gs.add.sprite(x,y,'atlas')
         // .play('player_stand')
-        .setSize(14,22).setOrigin(.5, 1).setPipeline('Light2D');
+        .setSize(14,22).setOrigin(.5, .5).setPipeline('Light2D');
         gs.events.on('update', this.update, this);
         gs.events.on('destroy', this.destroy, this);
         if(addLight)
@@ -96,12 +96,5 @@ export class Player implements IMoveEntity{
         this.light.setPosition(this.sprite.x+4, this.sprite.y-3);
     }
 
-    PlayAnimation(anim:string, ignoreIfPlaying:boolean = true) {
-        if(ignoreIfPlaying && anim == this.lastAnim)
-            return;
-        this.sprite.anims.play(anim, ignoreIfPlaying);
-        // this.sprite.(this.sprite.width/2, this.sprite.height/2);
-        this.lastAnim = anim;
-    }
 
 }
